@@ -1,0 +1,34 @@
+<html>
+<body>
+<div style='width:100%;height:100%;text-align: justify;'>
+<pre style='text-align: left; border: 1px dashed #008DEF; line-height: 18px; padding: 15px; font-size: 13px; font-family:'Courier New', Courier, monospace; overflow: auto;'><span style='font-weight:bold;color:#7B0052;'>package</span> com_1.collection;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.ArrayList;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.Collections;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.Iterator;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.LinkedHashSet;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.Set;
+<span style='font-weight:bold;color:#7B0052;'>import</span> java.util.TreeSet;
+<span style='font-weight:bold;color:#7B0052;'>public</span> <span style='font-weight:bold;color:#7B0052;'>class</span> ArrayList1 <span style='font-weight:bold;color:#D3171B'>{</span>
+	<span style='font-weight:bold;color:#7B0052;'>public</span> <span style='font-weight:bold;color:#7B0052;'>static</span> <span style='font-weight:bold;color:#7B0052;'>void</span> main(String[] args) <span style='font-weight:bold;color:#D3171B'>{</span>
+		ArrayList&lt;String&gt; arrayList = <span style='font-weight:bold;color:#7B0052;'>new</span> ArrayList&lt;String&gt;();
+		arrayList.add(<span style='color:#2A00FF'>"manjunath"</span>);
+		arrayList.add(<span style='color:#2A00FF'>"manjunath"</span>);
+		arrayList.add(<span style='color:#2A00FF'>"jetti"</span>);
+		arrayList.add(<span style='color:#2A00FF'>"raghunath"</span>);
+		arrayList.add(<span style='color:#2A00FF'>"jetti"</span>);
+		arrayList.add(<span style='color:#2A00FF'>"manjunath"</span>);
+		Set t1 = <span style='font-weight:bold;color:#7B0052;'>new</span> LinkedHashSet(arrayList);
+		Iterator it = t1.iterator();
+		<span style='font-weight:bold;color:#7B0052;'>while</span>(it.hasNext())
+		<span style='font-weight:bold;color:#D3171B'>{</span>
+			String s2 = (String)it.next();
+		    System.out.println(s2+<span style='color:#2A00FF'>" : "</span>+Collections.frequency(arrayList, s2));
+		<span style='font-weight:bold;color:#D3171B'>}</span>
+		
+	<span style='font-weight:bold;color:#D3171B'>}</span>
+
+<span style='font-weight:bold;color:#D3171B'>}</span></pre>
+
+</div>
+</body>
+</html>

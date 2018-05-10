@@ -1,0 +1,1523 @@
+{
+  "javaq": {
+    "ques": {
+    
+"topics": ["Core Java#1","Servlets#1","Jsp's#1","Struts#1","Springs#1","Hibernates#1"],
+"Core Java": [
+"Java Introduction#0","Oops Concepts#0","KeyWords#1","Hello World Program#0","Creating Object#1","CommandLine args#0",
+"Access Modifiers#1","String Class#0","StringBuffer Class#0","StringBuilder Class#0","Wrapper Classes#0","Constructors#0","Packages#0",
+"Method Overloading#0","Method Overridding#0","Abstract Class#0","Interface#0","Inner Class#0","Exception Handling#1","Type Casting#1",
+"Threads#1","I/O#0","Collections#1","Generics#1","Enums#0","Jdbc#1","ReflectionAPI#0","New Features#1","Applets#0","Swings#0","Serialization & De-Seria..#0","Annotations#0"
+],
+"Threads":[
+"Threading Introduction #0","Life Cycle of Thread #0","Creating Thread Class #0","Thread Priorities #0","Thread Pool#0","Garbage Collection#0","DeadLock #0",
+"ShutDownHook Class#0","Synchronization#0","Types of Synchronization#0"
+],
+"Collections":[
+"Collection Framework#0","Collection Interface#0","Collections Class#0","List#0","ArrayList#0","LinkedList#0","Vector#0","Set#0",
+"HashSet#0","LinkedHashSet#0","TreeSet#0","Map#0","HashMap#0","LinkedHashMap#0","TreeMap#0","HashTable#0","Queue #0",
+"PriorityQueue#0","DeQueue#0","Cursors#0","Comparable Interface#0","Comparator Interface#0","Properties Class#0"
+],
+"Generics":[
+"Generics in Java#0","Generics Types#1",
+"Generics  Methods#0","Generic Constructor#0","Generics, Inheritance, and Subtypes#0","Bounded Type Parameters#1",
+"Type Inference#0","Generics Wildcards#1","Type Erasure#1","Restrictions on Generics#0"
+],
+"Bounded Type Parameters":[
+"Bounded Type Parameters Introduction#0","Bounded Type Parameters In Methods#0","Bounded Type Parameters In Classes#0","Bounded Type Parameters In Interfaces#0"	
+],		
+"Type Erasure":[
+"Erasure of Generic Types#0","Erasure of Generic Methods#0","Effects of Type Erasure and Bridge Methods#0","Non-Reifiable Types#0"
+],		
+"Generics Types":[
+"Generic Class#0","Generic Interface#0","Type Parameter Naming Conventions#0",
+"Invoking and Instantiating a Generic Type#0","The Diamond#0","Multiple Type Parameters#0","Parameterized Types#0"
+], 		
+"Generics Wildcards":[
+"Generic Wildcards Introduction#0","Generics Upper Bounded Wildcard#0","Generics Unbounded Wildcard#0",
+"Generics Lower bounded Wildcard#0","Wildcards and Subtyping#0"
+],     		
+
+
+"Generics in Java":[
+    "<br>
+In case of arrays we can always give the guarantee about the type of the elements.<br>
+<br>
+Generics are a facility of generic programming that was added to the java programming language in 2004 as part of J2SE5.0<br>
+<br>
+To provide type-safety to collections generics are introduced.<br>
+They allows a type variable (or) method to operate on objects of various types while providing compile-time type safety.<br>
+<br>
+In case of arrays at the time of retrieval it is not required to perform any TypeCasting.<br>
+For example:<br>
+		String[] str = new String[10];<br>
+	    str[0] = \"A\";<br>
+	    str[1] = \"B\";<br>
+		String name1 = str[0]; /*TypeCasting is not required*/<br>
+		String name2 = str[1]; /*TypeCasting is not required*/<br>
+					<br>
+But in the case of collections at the time of retrieval compulsory we should perform typecasting otherwise we will get compile-time error.<br>
+<br>
+For example, if a programmer add integer in string type of collection, we dont get compile-time error but program may fail at run-time.<br>
+<font color=\"#0091EA\"><b>/*Creating list, adding different type of elements and iterating*/</b></font>	<br>
+				List list = new ArrayList();<br>
+				list.add(\"A\");<br>
+				list.add(\"B\");<br>
+				list.add(new Integer(10));<br>
+		<br><br>
+				String s1= (String)list.get(0);<br>
+				String s2= (String)list.get(1);<br>
+				/*Here we get ClassCastException*/<br>
+				String s3= (String)list.get(2);	<br>
+/*Here there is no guarantee that collections can hold a particular type of objects. Hence writting collections are not safe to use.*/<br>
+
+<br><br><br><br><br><br>					
+	",
+     "<br>
+<font color=\"#0091EA\"><b>/*Adding elements in String array and retrieving*/</b></font><br>
+public class Stringtest {<br>
+	public static void main(String[] args) {<br>
+		String[] str = new String[10];<br>
+	    str[0] = \"A\";<br>
+	    str[1] = \"B\";<br><br>
+	String name1 = str[0]; /*TypeCasting is not required*/<br>
+	String name2 = str[1]; /*TypeCasting is not required*/<br>
+	}<br>
+}<br>
+<br><br><br>
+<font color=\"#0091EA\"><b>/*In Java 5 : Adding elements in List and retrieving*/</b></font><br>
+public class Generictest {<br>
+	public static void main(String[] args) {<br>
+		List list = new ArrayList();<br>
+		list.add(\"A\");<br>
+		list.add(\"B\");<br>
+		list.add(new Integer(10));<br>
+		<br>
+		String s1= (String)list.get(0);<br>
+		String s2= (String)list.get(1);<br><br>
+		/*In Java5,  Here we get ClassCastException*/<br>
+		String s3= (String)list.get(2);	<br>
+	}<br>
+}<br>
+<br><br><br>
+<font color=\"#0091EA\"><b>/*In Java 7 : Adding elements in List and retrieving*/</b></font><br>
+public class Generictest {<br>
+	public static void main(String[] args) {<br>
+		List list = new ArrayList();<br>
+		list.add(\"A\");<br>
+		list.add(\"B\");<br><br>
+		list.add(new Integer(10)); /*In Java7,  Here we get compiler error */<br>
+		<br>
+		String s1= (String)list.get(0);<br>
+		String s2= (String)list.get(1);<br>
+		String s3= (String)list.get(2);	/*In Java7,  Here we don't  get ClassCastException*/<br>
+	}<br>
+}<br>
+<br><br><br><br><br>
+     ",
+     "Oops! No Data Found"
+     ],
+      		
+      "Creating Object":[
+      "By using new keyword#0","By using Factory Method#0","By using Cloning Concept#0","By using Class.forName()#0"
+      ],
+      "Jdbc":[
+      "Jdbc Introduction#0","Driver Interface#0",  "Types Of Drivers#0", 
+			"Steps To Connect DB#0", "DriverManager Class#0",  "Connection Interface#0", 
+			"Statement Interface#0", "PreparedStatement Interface#0", "ResultSet Interface#0", 
+			"ResultSetMetaData Interface#0", "DatabaseMetadata Interface#0",  "CallableStatement Interface#0", 
+			"Transaction Management#0", "Batch Processing#0",  "RowSet Interface#0", 
+			"SavePoint#0", "Jdbc 3.0#0", "Jdbc 4.0#0", "Connection Pooling#0"
+      
+      ],
+      "Exception Handling":[
+      	"Exception and types#0","Try and catch#0","Multi catch#0","Nested Try#0","Custom Exceptions#0","final#0","finally#0","throw#0","throws#0","try with resource#0"
+		],
+		
+       	"KeyWords":[
+      				"abstract#0","assert#0","boolean#0","break#0","byte#0","case#0","catch#0","char#0","class#0","const#0","continue#0","default#0","do#0","double#0",
+					"else#0","enum#0","extends#0","false#0","final#0","finally#0","float#0","for#0","goto#0","if#0","implements#0","import#0",
+					"instanceof#0","int#0","interface#0","long#0","native#0","new#0","null#0","package#0","private#0","protected#0","public#0",
+					"return#0","short#0","static#0","strictfp#0","super#0","switch#0","synchronized#0",
+					"this#0","throw#0","throws#0","transient#0","true#0","try#0","void#0","volatile#0","while#0"
+			      	],
+		"New Features":[
+				"Java 1.4 Features#1","Java 1.5 Features#1","Java 1.6 Features#1","Java 1.7 Features#1","Java 1.8 Features#1"
+		],	      		
+			
+		"Java 1.4 Features":[
+		"XML Processing#0","Java Print Service#0","IPv6 Support#0","Regular Expressions#0","Image I/O API#0","Java Web Start#0",
+		"JDBC 3.0 API#0","Logging API#0","Chained Exception#0","Assertions#0","Preferences API#0"
+		],		      	
+		"Java 1.5 Features":[
+	"Autoboxing/Unboxing#0","Generics#0","Typesafe Enums#0","Varargs#0","Enhanced for Loop#0","Instrumentation#0","Static Import#0","Metadata (Annotations)#0"		
+		],	      	
+		"Java 1.6 Features":[
+	"Java Compiler API#0","Pluggable Annotations#0","Native PKI, Java GSS, Kerberos and LDAP support#0","Integrated Web Services#0","Scripting Language Support#0","JDBC 4.0 API#0",	
+		],		      	
+		"Java 1.7 Features":[
+	"Strings in switch Statement#0","Try with Resources#0","Java nio Package#0","Binary Literals, underscore in literals#0","Diamond Syntax#0","Type Inference for Generic Instance Creation#0",
+	"Multiple Exception Handling#0","Support for Dynamic Languages#0","Automatic null Handling#0"
+		],		      	
+		"Java 1.8 Features":[
+	"Lambda Expressions#0","Pipelines and Streams#0","Date and Time API#0","Concurrent Accumulators#0","Parallel operations#0","PermGen Error Removed#0",
+	"TLS SNI#0","Default Methods#0","Type Annotations#0","Nashhorn JavaScript Engine#0"
+		],
+ 	"By using new keyword":
+	["<font color=\"#0091EA\"><b>There are 4 different ways to create objects in Java:</b></font> <br>
+1. By using new keyword:<br>
+2. By using Factory Method:<br>
+3. By using Cloning Concept:<br>
+4. By using Class.forName():<br>
+<br><br>
+<font color=\"#0091EA\"><b>1. Using new keyword:</b></font> <br>
+This is the most common way to create an object in Java.<br>
+MyObject object = new MyObject();
+<br><br><br><br><br><br><br><br>
+	",
+	"<html><head><link rel='stylesheet' type='text/css' href='style.css' /></head><body><pre class='resp'><span style='color:#3f7f59; '>/*using new keyword*/</span><br>
+<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>class</span> ObjectCreation_2 {<br>
+	<span style='color:#7f0055; font-weight:bold; '>void</span> dispaly()<br>
+	{<br>
+		<span style='color:#7f0055; font-weight:bold; '>System</span>.out.println(<span style='color:#2a00ff; '>\"In dispaly method\"</span>);<br>
+	}	<br>
+	<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>static</span> <span style='color:#7f0055; font-weight:bold; '>void</span> main(<span style='color:#7f0055; font-weight:bold; '>String</span>[] args) {<br>
+		ObjectCreation_2 obj=<span style='color:#7f0055; font-weight:bold; '>new</span> ObjectCreation_2();<br>
+		obj.dispaly();<br>
+	}<br>
+}<br>
+<br>
+}</pre><br>
+<br><br><br><br><br><br>
+</body></html>
+	",
+	"Oops! No Data Found"
+	],
+	"By using Factory Method":[
+	"<font color=\"#0091EA\"><b>2. By Using Factory Method:</b></font> <br>
+ClassName ObgRef=ClassName.FactoryMethod();<br>
+<br><br><br><br><br><br><br><br>
+	",
+	"<font color=\"#0091EA\"><b>/*Creating object using factory method.*/</b></font> <br>
+class ObjectCreation_4_1<br>
+{<br>
+	public static  ObjectCreation_4_1 obj;<br>
+	static ObjectCreation_4_1 create()<br>
+	{<br>
+		obj = new ObjectCreation_4_1();<br>
+		return obj;<br>
+	}<br>
+	void display()<br>
+	{<br>
+		System.out.println(\"In display method\");<br>
+	}<br>
+}<br>
+public class ObjectCreation_4 {<br>
+	public static void main(String[] args) {<br>
+		ObjectCreation_4_1 obj1 = ObjectCreation_4_1.create();<br>
+		obj1.display();<br>
+	}<br>
+}<br>
+<br><br><br><br><br>",
+	"Oops! No Data Found"
+	],
+	"By using Cloning Concept":[
+	"<font color=\"#0091EA\"><b>3. By Using Cloning Concept:</b></font> <br>
+By using clone(), the clone() can be used to create a copy of an existing object.<br>
+MyObjectName anotherObject = new MyObjectName();<br>
+MyObjectName object = anotherObjectName.clone();//cloning Object<br>
+<br><br><br><br><br><br><br><br>",
+	"<font color=\"#0091EA\"><b>/*using clone() of Object class.*/</b></font> <br>
+public class ObjectCreation_3 implements Cloneable {<br>
+	void dispaly()<br>
+	{<br>
+		System.out.println(\"In dispaly method\");<br>
+	}<br>
+	public static void main(String[] args) throws CloneNotSupportedException {<br>
+		 ObjectCreation_3 obj=new ObjectCreation_3();<br>
+		ObjectCreation_3 obj1=(ObjectCreation_3) obj.clone();<br>
+		obj1.dispaly();<br>
+	}<br>
+}
+/*A class implements the Cloneable interface to indicate to the java.lang.Object.clone() method that it is legal for that method to make a field-for-field copy of instances of that class*/<br>
+<br><br><br><br><br>
+	",
+	"Oops! No Data Found"
+	],
+	"By using Class.forName()":[
+	"<br><font color=\"#0091EA\"><b>4. Using Class.forName():</b></font> <br>
+If we know the name of the class & if it has a public default constructor we can create an object in this way.<br><br>
+MyObjectName object = (MyObjectName) Class.forName(\"PackageName.ClassName\").newInstance();<br><br>
+Example:<br>
+String str=(String)Class.forName(\"java.lang.String\").newInstance();<br>
+<br><br><br><br><br><br><br><br>
+	",
+	"<font color=\"#0091EA\"><b>/*Object creation using Class.forName() in java*/</b></font> <br>
+public class ObjectCreation_1 {<br>
+	void display()<br>
+	{<br>
+		System.out.println(\"In display method\");<br>
+	}<br>
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {<br><br>
+	
+	/*Returns the Class object associated with the class or interface with the given string name*/<br><br>	 
+	
+	Class&lt?&gt t = Class.forName(\"Java_Oops.ForNameObjectCreation\");<br>
+	ObjectCreation_1 obj = ((ObjectCreation_1) t.newInstance());<br>
+	 	obj.display();<br>	
+	}<br>
+}<br><br>
+/*Instances of the class <b>Class</b> represent classes and interfaces in a running Java application. */<br><br><br><br><br><br><br><br>",
+	"Oops! No Data Found"
+	],
+ 
+		
+		
+		
+	"CommandLine args":[
+	"<br>
+A Java application can accept any number of arguments from the command line. <br>
+This allows the user to specify configuration information when the application is launched.<br>
+The user enters command-line arguments when invoking the application and specifies them after the name of the class to be run.<br>
+<br><br>
+
+class Sumofarguments{  <br>
+public static void main(String args[]){  <br>
+		int total =  0;<br>
+		for(int i=0;i&lt;args.length;i++)  <br>
+		total = total + args[i];<br>
+		System.out.println(\"Sum of arguments : \"+total);  <br>
+		}  <br>
+}  <br><br>
+Passing CommondLine arguments while running: <br> <font color=\'#0091EA\'><b>java Sumofarguments 10 20</b></font>   
+<br><br><br><br><br>",
+	"Oops! No Data Found",
+	"Oops! No Data Found"
+	],	
+				      	
+	"Wrapper Classes":[
+	"<br>
+A Wrapper Class is a class whose object wraps (or) contains a primitive datatype.<br>
+When we create an object to a wrapper class, it contains a field and in this field we can store a primitive datatype.<br>
+In other words we can wrap primitive value into a wrapper class object.<br>
+Wrapper classes are used to convert primitive datatypes to objects and objects to primitive datatypes.<br>
+Wrapper Clases convert primitive datatypes into objects and this is needed on the internet for communication between 2 application.<br>
+Wrapper Classes are present in java.lang.*; package.<br>
+<br><br>
+<font color=\'#0091EA\'><b>Datatypes		WrapperClasses</b></font><br>
+char		Character<br>
+byte		Byte<br>
+short		Short<br>
+long		Long<br>
+float		Float<br>
+double		Double<br>
+boolean		Boolean<br>
+int		Integer<br>
+<br><br>
+<font color=\'#0091EA\'><b>AutoBoxing:</b></font><br>
+Converting a primitive datatype into an object is called autoboxing.<br>
+Integer obj=new Integer(504);<br>
+<br>
+<font color=\'#0091EA\'><b>AutoUnBoxing:</b></font><br>
+Converting an object into it's corresponding primitive datatype is called autounboxing.<br>
+			int i = obj.intValue();<br>
+<br><br><br><br>	
+",
+	"Oops! No Data Found",	
+	"Oops! No Data Found"
+	],
+	"StringBuffer Class":[
+	"<br>
+String Class objects are immutable, hence their content cannot be modified.<br>
+StringBuffer class objects are mutable, so they can be modified.<br>
+Moreover the methods that directly manipulate data of the object are not availabe in String class.<br>
+Such methods are availabe in StringBuffer Class.<br>
+<br>
+<font color=\'#0091EA\'><b>Creating StringBuffer Object:</b></font><br>
+2 Ways of creating StringBuffer Objects:<br>
+<br>
+1)Creating StringBuffer object with new keyword and passing string object to it.<br>
+	StringBuffer sb = new StringBuffer(\"Hello\");<br>
+<br>
+2)StringBuffer sb = new StringBuffer();<br>
+	sb.append(\"Hello\");	<br>
+<br><br>
+<font color=\'#0091EA\'><b>Methods of StringBuffer:</b></font><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(boolean b):</b></font> Appends the string representation of the boolean argument to the sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(char c):</b></font> Appends the string representation of the char argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(char[] str):</b></font>Appends the string representation of the char array argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(char[] str, int offset, int len):</b></font>Appends the string representation of a subarray of the char array argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(CharSequence s):</b></font>Appends the specified CharSequence to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(CharSequence s, int start, int end):</b></font>Appends a subsequence of the specified CharSequence to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(double d):</b></font>Appends the string representation of the double argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(float f):</b></font>Appends the string representation of the float argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(int i):</b></font>Appends the string representation of the int argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(long lng):</b></font>Appends the string representation of the long argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(Object obj):</b></font>Appends the string representation of the Object argument.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(String str):</b></font>Appends the specified string to this character sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	append(StringBuffer sb):</b></font>Appends the specified StringBuffer to this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	appendCodePoint(int codePoint):</b></font>Appends the string representation of the codePoint argument to this sequence.<br><br>
+<font color=\'#0091EA\'><b>int 	capacity():</b></font>Returns the current capacity.<br><br>
+<font color=\'#0091EA\'><b>char 	charAt(int index):</b></font>Returns the char value in this sequence at the specified index.<br><br>
+<font color=\'#0091EA\'><b>int 	codePointAt(int index):</b></font>Returns the character (Unicode code point) at the specified index.<br><br>
+<font color=\'#0091EA\'><b>int 	codePointBefore(int index):</b></font>Returns the character (Unicode code point) before the specified index.<br><br>
+<font color=\'#0091EA\'><b>int 	codePointCount(int beginIndex, int endIndex):</b></font>Returns the number of Unicode code points in the specified text range of this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	delete(int start, int end):</b></font>Removes the characters in a substring of this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	deleteCharAt(int index):</b></font>Removes the char at the specified position in this sequence.<br><br>
+<font color=\'#0091EA\'><b>void 	ensureCapacity(int minimumCapacity):</b></font>Ensures that the capacity is at least equal to the specified minimum.<br><br>
+<font color=\'#0091EA\'><b>void 	getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin):</b></font>Characters are copied from this sequence into the destination character array dst.<br><br>
+<font color=\'#0091EA\'><b>int 	indexOf(String str):</b></font>Returns the index within this string of the first occurrence of the specified substring.<br><br>
+<font color=\'#0091EA\'><b>int 	indexOf(String str, int fromIndex):</b></font>Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, boolean b):</b></font>Inserts the string representation of the boolean argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, char c):</b></font>Inserts the string representation of the char argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, char[] str):</b></font>Inserts the string representation of the char array argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int index, char[] str, int offset, int len):</b></font>Inserts the string representation of a subarray of the str array argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int dstOffset, CharSequence s):</b></font>Inserts the specified CharSequence into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int dstOffset, CharSequence s, int start, int end):</b></font>Inserts a subsequence of the specified CharSequence into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, double d):</b></font>Inserts the string representation of the double argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, float f):</b></font>Inserts the string representation of the float argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, int i):</b></font>Inserts the string representation of the second int argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, long l):</b></font>Inserts the string representation of the long argument into this sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, Object obj):</b></font>Inserts the string representation of the Object argument into this character sequence.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	insert(int offset, String str):</b></font>Inserts the string into this character sequence.<br><br>
+<font color=\'#0091EA\'><b>int 	lastIndexOf(String str):</b></font>Returns the index within this string of the rightmost occurrence of the specified substring.<br><br>
+<font color=\'#0091EA\'><b>int 	lastIndexOf(String str, int fromIndex):</b></font>Returns the index within this string of the last occurrence of the specified substring.<br><br>
+<font color=\'#0091EA\'><b>int 	length():</b></font>Returns the length (character count).<br><br>
+<font color=\'#0091EA\'><b>int 	offsetByCodePoints(int index, int codePointOffset):</b></font>Returns the index within this sequence that is offset from the given index by codePointOffset code points.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	replace(int start, int end, String str):</b></font>Replaces the characters in a substring of this sequence with characters in the specified String.<br><br>
+<font color=\'#0091EA\'><b>StringBuffer 	reverse():</b></font>Causes this character sequence to be replaced by the reverse of the sequence.<br><br>
+<font color=\'#0091EA\'><b>void 	setCharAt(int index, char ch):</b></font>The character at the specified index is set to ch.<br><br>
+<font color=\'#0091EA\'><b>void 	setLength(int newLength):</b></font>Sets the length of the character sequence.<br><br>
+<font color=\'#0091EA\'><b>CharSequence 	subSequence(int start, int end):</b></font>Returns a new character sequence that is a subsequence of this sequence.<br><br>
+<font color=\'#0091EA\'><b>String 	substring(int start):</b></font>Returns a new String that contains a subsequence of characters currently contained in this character sequence.<br><br>
+<font color=\'#0091EA\'><b>String 	substring(int start, int end):</b></font>Returns a new String that contains a subsequence of characters currently contained in this sequence.<br><br>
+<font color=\'#0091EA\'><b>String 	toString():</b></font>Returns a string representing the data in this sequence.<br><br>
+<font color=\'#0091EA\'><b>void 	trimToSize():</b></font>Attempts to reduce storage used for the character sequence.	<br><br>
+
+<br><br><br><br>	
+
+	",
+	"Oops! No Data Found",
+	"Oops! No Data Found"
+	],
+	"String Class":[
+	"<br>
+String is a class in java.lang package.<br>
+In java all classes are considered as datatypes.so we can consider String as a datatypes also.<br>
+Because a class is also called as datatype.<br>
+<br>
+There are 2 ways to create Strings in java.<br>
+1) String str = \"Hello\"; //by string literal<br>
+2) String str = new String(\"Hello\"); //by new keyword<br>
+<br>
+String objects are stored in the special memory called String Constant Pool,
+where  new object are not created if object already exist in the String Constant Pool.<br>
+This helps in memory management of java.<br>
+<br>
+
+<font color=\'#0091EA\'><b>Difference Between String str =\"Hello\";	 and String str = new String(\"Hello\"); ?</b></font><br>
+In  String str =\"Hello\"; - assignment operator is used to assigh the string literal to the string variable str.<br>
+JVM first check whether the same object is already available in the String Constant Pool.<br>
+If the object is available in the String Constant Pool, then jvm creates reference to it.<br>
+If the object is not available in the String Constant Pool, then jvm creates new object with the content \"Hello\".<br>
+<br>
+In String str = new String(\"Hello\");  -  new  keyword is used to create the String object.<br>
+In this case JVM  always creates a new object without checking in the String Constant Pool.<br>
+<br><br>
+
+String objects are immutable objects whose objects cannot be modified.<br>
+<font color=\'#0091EA\'><b>Methods of String Class:</b></font><br><br>
+<font color=\'#0091EA\'><b>char charAt(int index):</b></font>	It returns char value for the particular index<br><br>
+<font color=\'#0091EA\'><b>static String format(String format, Object... args):</b></font>	It returns formatted string<br><br>
+<font color=\'#0091EA\'><b>static String format(Locale l, String format, Object... args):</b></font> It returns formatted string with given locale<br><br>
+<font color=\'#0091EA\'><b>static String join(CharSequence delimiter, CharSequence... elements):</b></font>	It returns a joined string<br><br>
+<font color=\'#0091EA\'><b>String substring(int beginIndex):</b></font>	 It returns substring for given begin index<br><br>
+<font color=\'#0091EA\'><b>String substring(int beginIndex, int endIndex):</b></font>	It returns substring for given begin index and end index<br><br>
+<font color=\'#0091EA\'><b>String concat(String str):</b></font>	It concatinates specified string<br><br>
+<font color=\'#0091EA\'><b>String replace(char old, char new):</b></font>	It replaces all occurrences of specified char value<br><br>
+<font color=\'#0091EA\'><b>String replace(CharSequence old, CharSequence new):</b></font>	It replaces all occurrences of specified CharSequence<br><br>
+<font color=\'#0091EA\'><b>String trim():</b></font>	It returns trimmed string omitting leading and trailing spaces<br><br>
+<font color=\'#0091EA\'><b>String split(String regex):</b></font>	It returns splitted string matching regex<br><br>
+<font color=\'#0091EA\'><b>String split(String regex, int limit):</b></font>	It returns splitted string matching regex and limit<br><br>
+<font color=\'#0091EA\'><b>String intern():</b></font>	It returns interned string<br><br>
+<font color=\'#0091EA\'><b>String toLowerCase():</b></font>	It returns string in lowercase<br><br>
+<font color=\'#0091EA\'><b>String toLowerCase(Locale locale):</b></font>	It returns string in lowercase using specified locale<br><br>
+<font color=\'#0091EA\'><b>String toUpperCase():</b></font>	It returns string in uppercase<br><br>
+<font color=\'#0091EA\'><b>String toUpperCase(Locale locale):</b></font>	It returns string in uppercase using specified locale<br><br>
+<font color=\'#0091EA\'><b>boolean contains(CharSequence s):</b></font>	It returns true or false after matching the sequence of char value<br><br>
+<font color=\'#0091EA\'><b>boolean equals(Object another):</b></font>	It checks the equality of string with object<br><br>
+<font color=\'#0091EA\'><b>boolean isEmpty():</b></font>	It checks if string is empty<br><br>
+<font color=\'#0091EA\'><b>int length():</b></font>	It returns string length<br><br>
+<font color=\'#0091EA\'><b>int indexOf(int ch):</b></font>	It returns specified char value index<br><br>
+<font color=\'#0091EA\'><b>int indexOf(int ch, int fromIndex):</b></font>	It returns specified char value index starting with given index<br><br>
+<font color=\'#0091EA\'><b>int indexOf(String substring):</b></font>	It returns specified substring index<br><br>
+<font color=\'#0091EA\'><b>int indexOf(String substring, int fromIndex):</b></font>	It returns specified substring index starting with given index<br><br>
+<font color=\'#0091EA\'><b>static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements):</b></font>	It returns a joined string.<br><br>
+	<br><br><br><br><br>",
+	"<br>
+Class World{<br>
+	public static void main(String[] args){<br>
+		String str1 = \"Hello\"; //by string literal<br>
+		String str2 = new String(\"Hello\"); //by new keyword<br>
+	}<br>
+}<br>
+<br>
+<br><br><br><br>",
+	"<font color=\'#0091EA\'><b>What is difference between == operator and equal() ?</b></font><br>
+== operator compares the references of the string object.<br>
+equals() compares the contents of the objects.<br>
+<br>
+
+<font color=\'#0091EA\'><b>What is String Constant Pool?</b></font><br>
+String Constant Pool is a seperate block of memeory where the string objects are held by JVM.<br>
+<br>
+
+<font color=\'#0091EA\'><b>What is mutable and Immutable objects?</b></font><br>
+Mutable objects are those objects, whose contents can be modified.<br>
+Example StringBuffer and StringBuilder Class objects.<br>
+Immutable objects those objects, once created cannot be modified.<br>
+Example String Class objects.<br><br>
+
+<font color=\'#0091EA\'><b>Is String a primitive data type in Java?</b></font><br>
+No String is not a primitive data type in Java, even though it is one of the most extensively used object. <br>
+Strings in Java are instances of String class defined in java.lang package.<br>
+
+<br><br><br><br><br>"
+	],		      	
+	"StringBuilder Class":[
+	"<br>
+StringBuilder Class has been added in jdk 1.5 which has same features like StringBuffer class.<br>
+StringBuilder class objects are mutable as mutable as are the StringBuffer objects.<br>
+<br>
+<font color=\'#0091EA\'><b>Creating Object of StringBuilder Class:</b></font><br>
+1) StringBuilder sb = new StringBuilder(\"Hello\");<br>
+2)StringBuilder sb = new StringBuilder();<br>
+3)StringBuilder sb = new StringBuilder(20);<br>
+<br><br>
+<font color=\'#0091EA\'><b>StringBuilder Methods:</b></font><br>
+<font color=\'#0091EA\'><b>public void ensureCapacity(int minimumCapacity):</b></font>	It	is used to ensure the capacity at least equal to the given minimum.<br><br>
+<font color=\'#0091EA\'><b>public char charAt(int index):</b></font>	It	is used to return the character at the specified position.<br><br>
+<font color=\'#0091EA\'><b>public int capacity():</b></font>	It	is used to return the current capacity.<br><br>
+<font color=\'#0091EA\'><b>public int length():</b></font>	It	is used to return the length of the string i.e. total number of characters.<br><br>
+<font color=\'#0091EA\'><b>public String substring(int beginIndex):</b></font>	It	is used to return the substring from the specified beginIndex.<br><br>
+<font color=\'#0091EA\'><b>public String substring(int beginIndex, int endIndex):</b></font>	It is used to return the substring from the specified beginIndex and endIndex.<br><br>
+<font color=\'#0091EA\'><b>public StringBuilder append(String str):</b></font>	It	is used to append the specified string with this string. The append() method is overloaded like append(char), append(boolean), append(int), append(float), append(double) etc.<br><br>
+<font color=\'#0091EA\'><b>public StringBuilder insert(int offset, String str):</b></font>	It	is used to insert the specified string with this string at the specified position. The insert() method is overloaded like insert(int, char), insert(int, boolean), insert(int, int), insert(int, float), insert(int, double) etc.<br><br>
+<font color=\'#0091EA\'><b>public StringBuilder replace(int startIndex, int endIndex, String str):</b></font>	It	is used to replace the string from specified startIndex and endIndex.<br><br>
+<font color=\'#0091EA\'><b>public StringBuilder delete(int startIndex, int endIndex):</b></font>	It	is used to delete the string from specified startIndex and endIndex.<br><br>
+<font color=\'#0091EA\'><b>public StringBuilder reverse():</b></font>	It	is used to reverse the string.<br><br>
+
+<br><br><br><br><br>
+	",
+	"Oops! No Data Found",
+	"Oops! No Data Found"
+	],		      	
+	"Annotations":[
+	"Java Annotation is nothing but  a tag represents the metadata attached to java elements like<br> class, interface, methods, variables, enums, another annotations 
+to indicate some additional<br> 
+information which can be used by the compiler and JVM.<br>
+An annotation gives data about a program. It is not part of the program itself and no direct effect on the operation of the code.<br>
+Annotations are alternate option to XML and java-marker-interfaces, because they provide additional information.<br>
+<br>
+<b><font color=\"#0091EA\">Uses of Annotations:</font></b><br>
+Annotations uses the runtime process.<br>
+Software tools can process annotation information to generate code, XML files.<br>
+Annotations helps the compiler to detect errors or suppress warnings.<br>
+<br>
+<b><font color=\"#0091EA\">Rules for defining Java annotations:</font></b><br>
+Annotation declaration should start with an sign like @, following with an interface keyword, following with the annotation name.<br>
+Method declarations should not have any throws clauses.<br>
+Method declarations should not have any parameters.<br>
+Return types of the method should be one of the following:<br>
+	primitives<br>
+	String<br>
+	Class<br>
+	enum<br>
+	array of the above types<br>
+<br>
+<b><font color=\"#0091EA\">Java specifies the set of annotations which are built into the language</font></b> <br>	
+Some of the Built-In Java Annotations used in java code:<br>
+<b><font color=\"#0091EA\">@Override :</font></b> Checks that the function is an override. 
+Causes a compile warning if the function is not found in one of the parent classes.<br>
+
+<b><font color=\"#0091EA\">@Deprecated :</font></b> Marks the function as absolute. <br>Causes a compile warning if the f unction is used. When we want to inform the 
+compiler that a method is deprecated we can use this. <br>
+So, when a method is annotated with @Deprecated and that method is found used in some place, then the compiler generates a warning.<br><br>
+
+<b><font color=\"#0091EA\">@SuppressWarnings : </font></b> Instructs the compiler to suppress the compile time warnings specified in the annotation parameters. <br><br>
+
+<b><font color=\"#0091EA\">@SafeVarargs : </font></b> when applied to a method or constructor, asserts that the code does not perform
+ potentially unsafe operations on its varargsparameter. <br>
+When this annotation type is used, unchecked warnings relating to varargs usage are suppressed.<br>
+<b><font color=\"#0091EA\">@FunctionalInterface :</font></b> Introduced in Java SE 8, indicates that the type declaration is intended to be 
+a functional interface, as defined by the Java Language Specification.<br><br>
+
+<b><font color=\"#0091EA\">Some of the Built-In Java Annotations used in other annotations:</font></b><br>
+<b><font color=\"#0091EA\">@Retention : </font></b> Specifies how the marked annotation is stored.
+Whether in code only, compiled into the class, or available at runtime through reflection.<br>
+<b><font color=\"#0091EA\">@Inherited : </font></b>  Marks another annotation to be inherited to subclasses of annotated class (by default annotations are not inherited to subclasses).<br><br>
+<b><font color=\"#0091EA\">@Documented : </font></b> Marks another annotation for inclusion in the documentation.<br><br>
+<b><font color=\"#0091EA\">@Target : </font></b> Marks another annotation to restrict what kind of java elements the annotation may be applied.<br><br>
+
+<br><br><br><br><br>
+
+	",
+	"/*@override annotation exmple*/<br>
+class Vehical {<br>
+	public void drive() {<br>
+		System.out.println(\"Driving in Vehicle\");<br>
+	}<br>
+}<br>
+class Car extends Vehical {<br>
+	@Override<br>
+	public void drive() {<br>
+		System.out.println(\"Driving in Car\");<br>
+	}<br>
+}<br>
+public class AnnotationOverride {<br>
+	public static void main(String[] args) {<br>
+		Vehical obj = new Vehical();<br>
+		obj.drive();<br>
+	}<br>
+}<br>
+<br><br>
+
+/*@SuppressWarnings*/<br>
+public class AnnotationSupressWarings {<br>
+	@SuppressWarnings(\"unchecked\")  <br>
+	public static void main(String[] args) {<br>
+		List list = new ArrayList();<br>
+		list.add(\"A\");<br>
+		list.add(\"B\");<br>
+	}<br>
+}<br>
+/*Here if you don't use @SuppressWarnings annotation while adding list elements we get Type Safety waring.*/<br><br>
+<br>
+
+/*@Deprecated*/<br>
+class Vehicle {<br>
+	void car() {<br>
+		System.out.println(\"Inside Car method\");<br>
+	}<br>
+	@Deprecated<br>
+	void bike() {<br>
+		System.out.println(\"Inside Bike method\");<br>
+	}<br>
+}<br>
+public class AnnotationDeprecated {<br>
+	public static void main(String[] args) {<br>
+		Vehicle obj = new Vehicle();<br>
+		obj.bike();<br>
+	}<br>
+}<br>
+
+<br><br><br><br>",
+	"<b><font color=\"#0091EA\">What are meta Annotations ?</font></b><br>
+Annotations that apply to other annotations are called meta-annotations. <br>
+ "
+	],		      	
+			      	
+	"Hello World Program":[
+	"Oops! No Data Found",
+	"<br>
+	class HelloWorld{  <br>
+			public static void main(String args[]){  <br>
+			System.out.println(\"Hello Java..!\");  <br>
+		}  <br>
+}<br><br>
+<font color=\"#006600\">
+/*Here Class is the keyword, used to declare a class in java.*/<br>
+/*HelloWorld is the name of the class*/<br>
+/*public is the access modifier. It means class is visible to all*/<br>
+/*static is the keyword . Here static is given to the method, so main is static method. static methods are called by the  JVM, it does not require to  any object creation to invoke main method.*/<br>
+/*void is the keyword. void means nothing. Here main method is returning nothing, so we are using return type as void*/<br>
+/*main is not a keyword. It is the name of the method*/<br>
+/*String[] args :  This string array is used to take arguments from command Line*/<br>
+/*System.out.println(): It is used to print the content given between double quotes*/<br>
+</font>
+<br><br><br><br><br><br>
+	
+	",
+	" <font color=\"#0091EA\"><b>What if the main method is declared as private?</b></font><br>
+The program compiles properly but at runtime it will give \"Main method not public\" message.<br><br>
+<font color=\"#0091EA\"><b>What if the static modifier is removed from the signature of the main method?</b></font><br>
+Program compiles. But at runtime throws an error \"NoSuchMethodError\".<br><br>
+<font color=\"#0091EA\"><b>What if I write static public void instead of public static void?</b></font><br>
+Program compiles and runs properly.<br><br>
+<font color=\"#0091EA\"><b>What if I do not provide the String array as the argument to the method?</b></font><br>
+Program compiles but throws a runtime error \"NoSuchMethodError\".<br><br>
+<font color=\"#0091EA\"><b>What environment variables do I need to set on my machine in order to be able to run Java programs?</b></font><br>
+CLASSPATH and PATH are the two variables.<br><br>
+<font color=\"#0091EA\"><b>What is the first argument of the String array in main method?</b></font><br>
+The String array is empty. It does not have any element. This is unlike C/C++ where the first element by default is the program name.<br><br>
+<font color=\"#0091EA\"><b>If I do not provide any arguments on the command line, then the String array of Main method will be empty or null?</b></font><br>
+It is empty. But not null.<br><br>
+<font color=\"#0091EA\"><b>How can one prove that the array is not null but empty using one line of code?</b></font><br>
+A: Print args.length. It will print 0. That means it is empty. But if it would have been null then it would have thrown a NullPointerException on attempting to print args.length.<br><br>
+<font color=\"#0091EA\"><b>Can an application have multiple classes having main method?</b></font><br>
+Yes it is possible. While starting the application we mention the class name to be run. <br><br>
+The JVM will look for the Main method only in the class whose name you have mentioned. Hence there is not conflict amongst the multiple classes having main method.<br><br>
+<font color=\"#0091EA\"><b>Can I have multiple main methods in the same class?</b></font><br>
+No the program fails to compile. The compiler says that the main method is already defined in the class.<br><br>
+
+
+<br><br><br><br><br><br>"
+	],		      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+			      	
+       "Servlets": ["Servlets Introduction#0","What is Servlet?#0","CGI#0","Servlet API(Package : javax.servlet)#0","Servlet API(Package : javax.servlet.http)#0","Servlet Life Cycle#0","Different Ways of Creating Servlets#0","Servlet Interface#0","GenericServlet Class#0","HttpServlet Class#0","ServletContext Interface#0","ServletConfig Interface#0","RequestDispatcher Interface#0","Filters#0",
+		"HTTP Status Codes#0","Session Tracking Mechanism#0","Session Tracking : HTTP#0","Session Tracking : Cookies#0","Session Tracking : URL-Rewritting#0",
+		"Session Tracking : Hidden Form Fields#0","Annotations in servlets#0","SingleThreadModel interface#0","Asynchronous Servlet#0"
+      ],
+      "Jsp's":["Jsp Introduction#0","Jsp API","Life Cycle Phases  of Jsp Page#0","Jsp Components#0",
+      "Implicit Elements#0","Expression Language#0","JSTL#0","Jsp Actions#0","Jsp Scopes#0",
+	 "JavaBeans in Jsp#0","Custom Actions#0"
+      ],
+       
+      "Struts":[
+      "Struts 2.x Introduction",
+       "MVC  Model: 2",
+		"Features",
+		"Architecture",
+		"Configuration Files",
+		"Struts 2.x API",
+		"Action",
+		"Interceptors",
+		"ValueStack",
+		"ActionContext",
+		"ActionInovocation",
+		"OGNL",
+		"Aware Interfaces",
+		"Exception Handling",
+		"Multi Configuration",
+		"Multi Namespace",
+		"Validation",
+		"I18N",
+		"Tiles2"
+      ],
+      
+      "Springs":[
+      "Springs 3.x Introduction",
+		"Spring Architecture",
+		"Spring Modules",
+		"IOC Container",
+		"Bean Defination",
+		"Bean Scopes",
+		"Bean Lift Cycle",
+		"Spring Bean Autowiring",
+		"Autowiring - by Name",
+		"Autowiring - by Type",
+		"Autowiring - by Constructor",
+		"Autowiring - by Autodetect",
+		"DI - Constructor",
+		"DI - Setter",
+		"DI - Interface",
+		"Spring AOP",
+		"AOP - DTD",
+		"AOP - XML",
+		"AOP - Annotation",
+		"AOP - Before Advice",
+		"AOP - After Advice",
+		"AOP - Around Advice",
+		"AOP - Throws Advice",
+		"AOP - Joint Point",
+		"AOP - Point Cut",
+		"Spring JDBD"
+		],
+  		"Hibernates":[
+  		"Hibernates Overview",
+"ORM Overview",
+"Advantages & Disadvantages",
+"Hibernates Architecture",
+"Hibernate API",
+"Configuration",
+"Session",
+"Genrator Classes",
+"Dialect",
+"Persistant Class"
+  		
+  		],
+      "Java Introduction": [
+        "
+      <br>In 1990, <font color=\"#0091EA\"><b>Sun Micro Systems Inc</b></font>  has conceived a project to develop software for consumer electronic devices that could be controlled by a remote.<br>
+This project was called Stealth Project , but later it's name was changed to Green Project.<br>
+In january of 1991,  James Gosling, Bill Joy, Mike Sheradin, Patrick Naughton, and several others met in Aspen, Colorado to discuss this project.<br>
+Mike Sheradin was to focus on business development.PatrickNaughton was to focus on the graphics systems.<br> 
+James Gosling was to identify the proper programming language for the project.<br>
+Initially Gosling thought C & C++ could be used to develop the project, but the problem he faced with C & C++ is that they were system dependent languages and hence could not be used on various processors.<br>
+So he started a new programming language, which was system independent. This language was initially called Oak. <br>
+Since Oak name was registered by some other company, later it was changed as Java.<br>
+<br>
+<font color=\"#0091EA\"><b>Why the name Java?<br></b></font>
+James Gosling & his team members were consuming a lot of coffee while developing this language. <br>
+They felt that they were able to develop a better language because of the good quality coffee they consumed.<br>
+So the coffee had its role in developing this language and good quality coffee was imported from a place called 'Java island'.<br>
+Hence they given,  the name of the place for the language they developed. And the symbol for Java language is coffee cup & saucer.<br>
+<br>
+Initially Java is a part of Sun Microsystems ,  which is now a part of Oracle Corporation.<br>
+<br>
+Java is a programming language, a high-level programming language and a platform, supporting the concepts of Object-oriented Programming.<br>
+It was released in 1995 as a part of Sun Microsystems' Java platform. <br><br>
+
+Some of the Vesions, Codename & Productnames.<br>
+Version	 >>  Codename	 >> productname<br>
+<font color=\"#0091EA\"><b>
+1.5	 	>> Tiger		 					>> J2SE 5<br>
+1.6	 	>> Mustang	 				>> Java SE 6<br>
+1.7	 	>> Dolphin	 					>> Java SE 7<br>
+1.8	 	>> (discontinued) 			>> Java SE 8<br>
+</b></font>
+<br>
+
+Initial version of Java contains only J2SE, later Sun Microsystems  added remaining 2 flavours i.e, J2EE & J2ME.<br>
+<font color=\"#0091EA\"><b>J2SE </b></font>: Java Platform Standard Edition :  It is used to develop secure and portable applications that run on server & and desktop.<br>
+<font color=\"#0091EA\"><b>J2EE </b></font>: Java Enterprise Edition : It is the industory standard for enterprise java computing i.e, for developing web application.<br>
+<font color=\"#0091EA\"><b>J2ME </b></font>: Java Platform Micro Edition : It provides flexibile environment for applications running on mobile and other embedded devices like printers & PDA's etc.<br>
+<br><br><br><br><br><br>
+ ",
+        "Oops! No Data :)",
+        "Oops! No Data :)"
+      ],
+      "Oops Concepts": [
+        "A <b>programming language</b> is a formal computer language or constructed language designed to communicate instructions to a machine, particularly a computer.<br>
+Programming languages can be used to create programs to control the behavior of a machine or to express algorithms.
+<br>
+<br>
+There many types of programming languages which includes:<br>
+1: Procedural languages<br>
+2: Object-Oriented languages<br>
+3: Assembly languages<br>
+4: Hardware description languages<br>
+5:  Compiled languages<br>
+& many more...
+<br><br>
+
+<span><font color=\"#0091EA\"><b>Procedural Languages:</b></font></span><br>
+The languages like C,Pascal,Fortran etc., are called Procedural Oriented Programming languages, because in these languages.<br>
+procedures or functions are used to perform a task.<br>
+In procedural languages more concentration on the procedure (or) process, leaving data behind.<br>
+The data which is more important than the process is left global(or)public, open for all and thereby giving a chance for illegal manipulation.
+<br><br>
+
+<span><font color=\"#0091EA\"><b><center>Object-Oriented languages:</b></font></span><br>
+The languages like C++, Java use Classes and Objects in their programs and are called Object-Oriented Programming languages.<br>
+In Object-Oriented languages concentration is onthe Object i.e., data.<br>
+Data is kept under tight security & process is built around data.
+<br><br>
+
+<span><font color=\"#0091EA\"><b>Features of Object-Oriented languages:</b></font></span><br>
+There are many features related to the Object-Oriented approach.Some of then are,<br>
+1: Class<br>
+2: Object<br>
+3: Encapsulation<br>
+4: Abstraction<br>
+5: Inheritance<br>
+6: polymorphism<br><br>
+
+<span><font color=\"#0091EA\"><b>1: Class:</b></font></span><br>
+A class can be defined as a template (or) blue print that describes the behaviors/states that object of its type support.<br>
+A Class is central to any object-oriented programming.<br>
+A Class is collection of data & methods.<br>
+A class is a blue print from which individual objects are created.<br>
+It is only through class the concept of data security gets implemented in object-oriented languages.
+<br><br>
+<span><font color=\"#0091EA\"><b>2: Object:</b></font></span><br>
+Object is the root of the entire OOP's methodology.<br>
+An object is also called as a variable of class type.
+An Object is any thing that really exists in the world & can be distinguished from others.<br>
+For example, a car , a person, a tree etc..<br>
+Object have both states & behaviours.<br>
+Example: 
+A person has states like - name, color etc.. <br>
+A person has behaviours like - talking, running, laughing etc..
+<br><br>
+<span><font color=\"#0091EA\"><b>3: Encapsulation:</b></font></span><br>
+Encapsulation is the mechanism where the data (variables) and the code (methods) that act on the data will bind together.<br>
+For example, writing a class with variables & methods inside the class. Thus, a class bing them together.<br>
+so class is an example for encapsulation.
+<br><br>
+<span><font color=\"#0091EA\"><b>4: Abstraction:</b></font></span><br>
+May be a class contains lot's of data and the user doesn't need the entire data.<br>
+The user requires only some part of the available data.<br>
+In this case we can hide the unnecessary data from the user & expose only that data that is of interest to the user.This is called abstraction.
+For example, take a bus. Any bus will have some parts like engine, tyres and mechanical equipments etc.
+The user of the bus should know how to drive the bus  and does not require any knowledge of these internal parts of bus.
+<br><br>
+<span><font color=\"#0091EA\"><b>5: Inheritance:</b></font></span><br>
+Inheritance is one of the key feature of the oop's through which the new classes will acquire all the features of the existing classes.
+For example, a class A with some members (i.e, variables & methods).If another class B , want's to acquire same features as class A, then we can derive class B from A by inheriting members of A class.
+The idea behind inheritance is reusability.
+<br><br>
+<span><font color=\"#0091EA\"><b>6: Polymorphism:</b></font></span><br>
+In Greek, poly means many & morphos means many.<br>
+So, polymorphism is the ability to exist in different forms.<br>
+In programming it refers to,  a single variable to refer to objects of different types and thus, using that variable we can call the methods of different objects.<br>
+Thus a method can perform different tasks depending onthe type of the object.<br>
+",
+        "<font color=\"#0091EA\"><b>/*Class Example*/</b></font><br>
+class Person{<br>
+	//properties of person - variables<br>
+	String name;<br>
+	int age;<br>
+	//actions performed by a person<br>
+	void talk(){<br>
+	}<br>
+	void run(){<br>
+	}<br>
+}<br>
+/*Here Person is the name of the class, and class have it's members (variables & methods)*/<br>
+<br><br>
+<font color=\"#0091EA\"><b>/*Creating Object Example*/</b></font><br>
+Person ram = new Person();<br>
+/*Here ram is the name of the object of type Person*/<br>
+<br><br>
+<font color=\"#0091EA\"><b>/*Encapsulation Example*/</b></font><br>
+class Person{<br>
+	private String name;<br>
+	private int age;<br>
+	public void talk(){<br>
+		System.out.println(\"Hello I am \"+ name);<br>
+	}<br>
+}<br>
+/*Here we're using class to encapsulate  variables & methods . */<br>
+<br><br>
+<font color=\"#0091EA\"><b>/*Inheritance Example*/</b></font><br>
+class Parent{<br>
+	String surname;<br>
+}class Child extends Parent{<br>
+	String name;<br>
+	public void printFullName(){<br>
+		System.out.println(\"Hello my full name is \"+ surname + \"  \"+ name);<br>
+	}<br>
+}<br>
+/*variables & methods of parent class can be inherited to child class*/<br>
+/*Here surname can be inherited from Parent class to Child class */<br>
+<br><br>
+<font color=\"#0091EA\"><b>/*Polymorphism Example*/</b></font><br>
+class Add{<br>
+	void calculation(int no){<br>
+		System.out.println(no+no);<br>
+	}<br>
+}<br>
+Class Sub extends Add{<br>
+	void calculation(int no){<br>
+		System.out.println(no-no);<br>
+	}<br>
+}<br>
+/*Take two objects obj1 & obj2 of classes Add & Sub respectively.<br>Now create a reference variable 'ref' to class Add as ,<br>
+Add ref;<br>
+If you use this 'ref' variable to the object of class Add, as:<br>
+ref = obj1;<br>
+Now if you call the  calculation(int) as;<br>
+ref.calculation(1);<br>
+It will call the calculation(int) method of Add class.<br>
+
+If you use this 'ref' variable to the object of class Sub, as:<br>
+ref = obj2;<br>
+Now if you call the  calculation(int) as;<br>
+ref.calculation(1);<br>
+It will call the calculation(int) method of Sub class.<br>
+
+*/",
+        "<span><font color=\"#0091EA\"><b>What is Procedural-Oriented approach?</b></font></span><br>
+Procedural-Oriented approach is a programming methodology to design computer programs using functions.<br>
+<span><font color=\"#0091EA\"><b>What is Object-Oriented approach?</b></font></span><br>
+Object-Oriented approach is a programming methodology to design computer programs using classes & objects.<br>
+<span><font color=\"#0091EA\"><b>What are Procedural Languages?</b></font></span><br>
+Ada,C,Pascal,Fortran, MATLAB, JavaScript, Go, ECMAScript and more...<br>
+<span><font color=\"#0091EA\"><b>What are Object-Oriented Languages?</b></font></span><br>
+Ada 95, C++,Java, PHP, Groovy, Objective-c, Cobra and more...<br>
+<span><font color=\"#0091EA\"><b>Is Java purely object-oriented?</b></font></span><br>
+Java is not purely object oriented language as there are primitive data types which are not objects.<br>
+However, in Java 5.0, autoboxing enables programmers to proceed as if primitive types were instances of their wrapper class.<br>
+<span><font color=\"#0091EA\"><b>Which is purely object-oriented programming language? </b></font></span><br>
+Simula<br>
+<span><font color=\"#0091EA\"><b>What are the languages that are not purely object oriented?</b></font></span><br>
+Java, Perl and more...<br>
+<span><font color=\"#0091EA\"><b>What is the difference b/w class & object?</b></font></span><br>
+A Class is a model for creating objects & doesn't exist phisically.
+An object is any that exists physcially.<br>
+<span><font color=\"#0091EA\"><b>What is the instance?</b></font></span><br>
+Instance means, allocating sufficient memory-space to a class for it's data & members.
+<br><br><br><br>"
+      ],
+      "Servlets Introduction":[
+      "<br> At the beginning stages of computers we have client server architecture. <br>
+Where the main purpose of the server is to share the static resources to the client requirements. <br>
+In this case when we send a request to the server machine, server will identify the requested resource and send back to the client machine as a response.<br>
+Here server is generating the response without executing any application at server machine so that this kind of response is called as static response.<br>
+As per the application requirements we need to get dynamic response from server machine. <br>
+To generate dynamic response server must execute some applications at server machine, for this we should provide server side applications.<br>
+<br>
+To provide server side programming for the sake of dynamic response we should use the following server side technologies.<br>
+1)	CGI<br>
+2)	Servlets<br>
+3)	Jsp<br>
+4)	php	<br>
+5)	nodeJs<br>
+<br><br><br><br><br> "
+	,"Oops! No Data",
+	"<font color=\'#0091EA\'><b><br>1)What is Protocol?</b></font><br>
+Protocol is a set of rules and regulations, which can be used to carry the data from one machine to another machine over the network.<br>
+Http protocol is a connection less, stateless and a compatible protocol to carry hypertext data from client to server and from server to client.<br>
+<br>
+<font color=\'#0091EA\'><b>2)What is  Hyper Text Transfer Protocol [HTTP] ?</b></font><br>
+Http protocol is a connection less, stateless and a compatible protocol to carry hypertext data from client to server and from server to client.<br>
+Http uses reliable TCP connections bydefault on TCP port 80.<br>
+Http methods : <br>
+1.0 version the Http methods are <br>1) GET   <br>2) POST	<br>3) HEAD<br>
+1.1 version the Http methods are <br>1) Options <br>2) PUT <br>3) TRACE <br>4) DELETE<br>
+
+<font color=\'#0091EA\'><b>3)What is Transmission Control Protocol [TCP] ?</b></font><br>
+The Transmission Control Protocol (TCP) is a core protocol of the Internet protocol suite.<br>
+Transmission control protocol (TCP) is a network communication protocol designed to send data packets over the Internet.<br>
+TCP is a transport layer protocol in the OSI layer and is used to create a connection between remote computers by transporting and ensuring the delivery of messages over supporting networks and the Internet.<br>
+<br>
+<font color=\'#0091EA\'><b>4)What is IP Address?</b></font><br>
+IP Address is the unique identification to each and every machine over the network, which could be provided by the network manage.<br>
+<br>
+<font color=\'#0091EA\'><b>5)What is Port Number?</b></font><br>
+Port Number is the unique identification to each and every process being executed at single machine, which could be provided by the operating system. <br>
+<br>
+<font color=\'#0091EA\'><b>6)What is Query String?</b></font><br>
+Query String is a collection of name value pairs appended to URL in order to send input to a particular web resource from client machine.<br>
+<br>
+<font color=\'#0091EA\'><b>7)What is Uniform Resource Identifier (URI)?</b></font><br>
+URI is a string specification which can be used to refer an object available at server machine.<br>
+There are two types of URI's:<br>
+URL: url is a string specification which can be used to refer an object available at machine through it's locator.<br>
+URN: urn is a string specification which can be used to refer an object available at server machine through it's logical name.<br>
+<br><br><br><br><br>
+      "
+      ],
+       "CGI":[
+      "<br>  CGI is a technology which was designed on the basis of 'C' technology and some scripting technology.<br>
+If we deploy any CGI application at server for every new request came from client automatically server will create a separate process at server machine.<br>
+Process is a heavy weight component that's why to handle it system must consume more number of system resources.<br>
+In the above situation if we increase more number of requests to the same CGI application then server will create more number of processes. <br>
+This approach will increase burden to the server machine as a result application performance could be degraded. <br>
+By running a CGI program, rather than delivering a static HTML page, the server can put dynamic and updated information on web page.<br>
+<br><br><br><br><br><br>
+      ",
+	  "Oops! No Data",
+	  "Oops! No Data"
+      ],
+      "What is Servlet?":[
+      "<br>  Servlets is a server side technology which was designed on the basis of Java Technology. <br>
+As we know Java is a Thread Based Technology that's why Servlets is also a Thread Based Technology.<br>
+If we deploy any Servlets application at server machine then for every new request came from clients automatically servlet may create a separate thread on the servlet object.<br>
+If we increase more number of client requests then more number of threads will be created instead of process. <br>
+Thread is a light weight component when compare to process that's why this approach will not increase burden to the server machine.<br>
+
+<br><br><br><br><br><br>
+      "
+      ],
+      "Servlet API(Package : javax.servlet)":[
+      "<br>  Servlet API contains 2 packages namely <font color=\"#0091EA\"><b>javax.servlet</b></font> & <font color=\"#0091EA\"><b>javax.servlet.http</b></font><br>
+javax.servlet package contains intefaces & classes that are not specific to any protocol.<br>
+<font color=\"#0091EA\"><b>Interfaces in javax.servlet package:</b></font><br>
+Servlet<br>
+ServletRequest<br>
+ServletResponse<br>
+RequestDispatcher<br>
+ServletConfig<br>
+ServletContext<br>
+SingleThreadModel<br>
+Filter<br>
+FilterConfig<br>
+FilterChain<br>
+ServletRequestListener<br>
+ServletRequestAttributeListener<br>
+ServletContextListener<br>
+ServletContextAttributeListener<br>
+<br>
+<font color=\"#0091EA\"><b>Classes in javax.servlet package:</b></font><br>
+GenericServlet<br>
+ServletInputStream<br>
+ServletOutputStream<br>
+ServletRequestWrapper<br>
+ServletResponseWrapper<br>
+ServletRequestEvent<br>
+ServletContextEvent<br>
+ServletRequestAttributeEvent<br>
+ServletContextAttributeEvent<br>
+ServletException<br>
+UnavailableException<br>
+<br><br><br><br><br><br>
+      "
+      ],
+      "Servlet API(Package : javax.servlet.http)":[
+      "<br>  javax.servlet.http contains interfaces & classes that are specific to http protocol.<br>
+<br>
+<font color=\"#0091EA\"><b>Interfaces in javax.servlet.http package:</b></font><br>
+HttpServletRequest<br>
+HttpServletResponse<br>
+HttpSession<br>
+HttpSessionListener<br>
+HttpSessionAttributeListener<br>
+HttpSessionBindingListener<br>
+HttpSessionActivationListener<br>
+HttpSessionContext (deprecated)<br>
+<br><br><br><br><br><br>
+<font color=\"#0091EA\"><b>Classes in javax.servlet.http package:</b></font><br>
+HttpServlet<br>
+Cookie<br>
+HttpServletRequestWrapper<br>
+HttpServletResponseWrapper<br>
+HttpSessionEvent<br>
+HttpSessionBindingEvent<br>
+HttpUtils (deprecated)<br>
+<br><br><br><br><br><br>
+      ",
+      "Oops! No  Data ",
+      "Oops! No Data "
+      
+      ],
+	  "Servlet Life Cycle":[
+	  "<font color=\'#0091EA\'><b>Servlet Loading:</b></font> <br>
+Custom ClassLoader of Container  will load the requested servlet byte to the memory.<br>
+<br>
+<font color=\'#0091EA\'><b>Servlet Instantiation:</b></font> <br>
+Container will create an object for loaded servlet.<br>
+Servlet instance is created only once in the servlet life cycle.<br>
+<br>
+<font color=\'#0091EA\'><b>Servlet Initialization:</b></font> <br>
+Container will execute the init() only once to perform initialization of the servlet .<br>
+<br>
+<font color=\'#0091EA\'><b>public void init(ServletConfig config) throws ServletException </b></font> <br>
+<br>
+<font color=\'#0091EA\'><b>Generating Dynamic Response:</b></font> <br>
+After servlet initialization container will create a new thread to access service method for every request. <br>
+Container calls the service() each time when request for the servlet is received.<br>
+To access service(), container must create servlet request & response object's.<br>
+After creating request/response objects, container will generate dynamic response.<br>
+After reaching the end of the service() the thread will be in dead state.<br>
+The container dispatch response  to the  client  and after dispatching container will destroy request and response object's.<br>
+ <br>
+<font color=\'#0091EA\'><b>public void service(ServletRequest request, ServletResponse response)   throws ServletException, IOException </b></font> <br>
+ <br> 
+<font color=\'#0091EA\'><b>Servlet De-Instantiation:</b></font> <br>
+After destroying request and response objects container will wait up to some time, depends on the container implementation,
+when container identifies no further request for the same resource then container will destroy the servlet object.<br>
+<br>
+<font color=\'#0091EA\'><b>public void destroy()  </b></font> <br>
+<br>
+<font color=\'#0091EA\'><b>Servlet Unloading:</b></font> <br>
+As per the servers memory management container will unload the loaded servlet byte code.<br>
+<br><br><br><br>",
+	  "Oops! No  Data ",
+	  "<font color=\'#0091EA\'><b>1)What are Servlet Life Cylce Methods?</b></font> <br>
+init(); <br>
+service() <br>
+destroy() <br>
+ <br>
+<font color=\'#0091EA\'><b>2)Is Servlets thread-safe?Why?</b></font> <br>
+Yes. <br>
+Create a new thread to access service method for every request.
+That's why servlets are by default thread safe.
+ <br>
+<font color=\'#0091EA\'><b>3)When servlet object is created?</b></font> <br>
+At the time of first request. <br>
+<br> <br> <br> <br>
+" ],
+"Different Ways of Creating Servlets":[
+"As per the predefined library(packages javax.servlet.*, javax.servlet.Http.*) provided by the Servlet API, there are 3 ways to design servlet.<br>
+<font color=\'#0091EA\'><b>1)Implementing Servlet Interface:</b></font> <br>
+public class MyServlet implements Servlet{<br>
+	//Body of the Servlet<br>
+}<br>
+<font color=\'#0091EA\'><b>2)Extending Generic Servlet Abstract Class:</b></font> <br>
+public class MyServlet extends Genericservlet{<br>
+	//Body of the Servlet<br>
+}<br>
+<font color=\'#0091EA\'><b>3)Extending Httpservlet Abstract Class:</b></font> <br>
+public class MyServlet extends Httpservlet{<br>
+	////Body of the Servlet<br>
+}
+<br><br><br><br>",
+ "<font color=\'#0091EA\'><b>1)Implementing Servlet Interface:</b></font> <br>
+import java.io.*;  <br>
+import javax.servlet.*;<br>   
+public class MyServlet implements Servlet{  <br>
+	ServletConfig config=null;  <br>
+	public void init(ServletConfig config){  <br>
+	this.config=config;  <br>
+	System.out.println(\"servlet is initialized....\");  <br>
+	}  <br>
+	public void service(ServletRequest req,ServletResponse res) throws IOException,ServletException{  <br>
+	res.setContentType(\"text/html\");  <br>
+	PrintWriter out=res.getWriter();  <br>
+	out.print(\"<html><body>MyServlet Example</body></html>\");  <br>
+	}  <br>
+	public String getServletInfo(){return \"servlet info\";}  <br>
+	public ServletConfig getServletConfig(){return config;}  <br>
+	public void destroy(){System.out.println(\"servlet is destroyed....\");}  <br>
+}  <br>
+<br>
+<font color=\'#0091EA\'><b>2)Extending Generic Servlet Abstract Class:</b></font> <br>
+import java.io.*;  <br>
+import javax.servlet.*;<br>  
+public class MyServlet extends GenericServlet{  <br>
+public void service(ServletRequest req,ServletResponse res) throws IOException,ServletException{  <br>
+	res.setContentType(\"text/html\");  <br>
+	PrintWriter out=res.getWriter();  <br>
+	out.print(\"<html><body>MyServlet Example</body></html>\");  <br>
+	}  <br>
+} <br>
+<br>
+<font color=\'#0091EA\'><b>3)Extending Httpservlet Abstract Class:</b></font> <br>
+import javax.servlet.http.*;  <br>
+import javax.servlet.*;  <br>
+import java.io.*;  <br>
+public class MyServlet extends HttpServlet{  <br>
+public void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException  <br>
+{  <br>
+	res.setContentType(\"text/html\");<br>
+	PrintWriter out=res.getWriter();<br>
+	out.print(\"<html><body>MyServlet Example</body></html>\");    <br>
+	out.close();<br>
+	}<br>
+}   <br>
+<br><br><br><br>",
+ "Oops! No  Data "
+],"Servlet Interface":[
+"<font color=\'#0091EA\'><b>Servlet Interface:</b></font> <br>
+Present in package javax.servlet;<br>
+Servlet interface is for developing servlet.<br>
+Servlet is a body of java code that is loaded into and runs inside a servlet engine, such as a web server.<br>
+It recevies and respond to request from clients.<br>
+All servlets implements servlet inteface. Servlet programmers typically do this by subclassing either Genric Servlet class, which implements the servlet interface <br>
+(or) by subclassing  Generic Servlet's descendent Http Servlet class.<br>
+<br>
+<font color=\'#0091EA\'><b>Methods of Servlet Interface:</b></font> <br>
+<font color=\'#0091EA\'><b>public abstract void init(ServletConfig obj)throws ServletException</b></font> <br>
+It initializes the servlet with the data present in ServletConfig object.<br>
+This method is called once automatically by the servlet engine when it loads the servlet.<br>
+The init method should save the servletConfig object. so that it can be returned by the getServletConfig method.<br>
+<br>
+<font color=\'#0091EA\'><b>public abstract void service(ServletRequest request, ServletResponse response)throws ServletException,IOException</b></font> <br>
+ServletRequest object contains information about the service request including parameters by the client.<br>
+ServletResponse object is used to return the  response information to the client.<br>
+This service method process the business logic requested by the client.<br>
+<br>
+<font color=\'#0091EA\'><b>public abstract String getServletInfo()</b></font> <br>
+Returns a string containing information about the servlet, such as it's author, version and copy right.<br>
+<br>
+<font color=\'#0091EA\'><b>public abstract void destroy()</b></font> <br>
+Clean up what ever resources are being held(Memory, file handles,threads).<br>
+<br>
+<font color=\'#0091EA\'><b>public abstract servletConfig getServletConfig()</b></font> <br>
+Returns a servlet config object, which contains any initalization parameters and startup configuration for the servlet.<br>
+<br> ",
+"Oops! No  Data ",
+"Oops! No  Data "
+],
+"GenericServlet Class ":[
+"<font color=\'#0091EA\'><b>GenericServlet Class:</b></font> <br>
+Present in package javax.servlet.GenericServlet;<br>
+It is abstract class.<br>
+It implements Servlet interface,ServletConfig inteface, Serializable inteface.<br>
+It provides the implemetation to all the methods except the service method.<br>
+GenericServlet can handle any type of requests, so it is protocol-independent.<br>
+You may create a servlet by inheriting the Genericservlet class and providing the implementation of the service method.<br>
+<br>
+<font color=\'#0091EA\'><b>Methods of GenericServlet Interface:</b></font> <br>
+<font color=\'#0091EA\'><b>public void init(ServletConfig config) :</b></font> <br>
+It is used to initialize the servlet.<br><br>
+<font color=\'#0091EA\'><b>public abstract void service(ServletRequest request, ServletResponse response) :</b></font> <br>
+It provides service for the incoming request. It is invoked at each time when user requests for a servlet.<br><br>
+<font color=\'#0091EA\'><b>public void destroy(): </b></font> <br>
+It is invoked only once throughout the life cycle and indicates that servlet is being destroyed.<br><br>
+<font color=\'#0091EA\'><b>public ServletConfig getServletConfig():</b></font> <br>
+It returns the object of ServletConfig.<br><br>
+<font color=\'#0091EA\'><b>public String getServletInfo():</b></font> <br>
+It  returns information about servlet such as writer, copyright, version etc.<br><br>
+<font color=\'#0091EA\'><b>public String getServletName():</b></font> <br>
+It returns the name of the servlet object.<br><br>
+<font color=\'#0091EA\'><b>public void log(String msg):</b></font> <br>
+It  writes the given message in the servlet log file.<br><br>
+<font color=\'#0091EA\'><b>public void log(String msg,Throwable t):</b></font> <br>
+It writes the explanatory message in the servlet log file and a stack trace.<br><br>
+<font color=\'#0091EA\'><b>public void init():</b></font> <br>
+It is a convenient method for the servlet programmers, now there is no need to call super.init(config)<br><br>
+<font color=\'#0091EA\'><b>public ServletContext getServletContext():</b></font> <br>
+It returns the object of ServletContext.<br><br>
+<font color=\'#0091EA\'><b>public String getInitParameter(String name) :</b></font> <br>
+It returns the parameter value for the given parameter name.<br><br>
+<font color=\'#0091EA\'><b>public Enumeration getInitParameterNames(): </b></font> <br>
+It returns all the parameters defined in the web.xml file.<br><br>
+<br><br><br><br>
+",
+"<br><br><br>										Oops! No  Data ",
+"Oops! No  Data "
+],"HttpServlet Class":[
+"<font color=\'#0091EA\'><b>HttpServlet:</b></font> <br>
+Present in package javax.servlet.http.HttpServlet;<br>
+It is  abstract class.<br>
+It extends the GenericServlet and implements Serializable inteface.<br>
+HttpServlet uses the Http protocol for use on the web.<br>
+HttpServlet class widely used to create an Http servlet's, suitable for a websites because 
+it provides methods  to handle http specific requests such as doGet() ,doPost(),doHead() etc.<br>
+<br>
+<font color=\'#0091EA\'><b>Methods Of HttpServlet:</b></font> <br>
+<font color=\'#0091EA\'><b>public void service(ServletRequest req,ServletResponse res):</b></font> <br>
+It dispatches the request to the protected service method by converting the request and response object into http type.<br><br>
+<font color=\'#0091EA\'><b>protected void service(HttpServletRequest req, HttpServletResponse res): </b></font> <br>
+It receives the request from the service method, and dispatches the request to the doXXX() method depending on the incoming http request type.<br><br>
+<font color=\'#0091EA\'><b>protected void doGet(HttpServletRequest req, HttpServletResponse res):</b></font> <br>
+It handles the GET request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doPost(HttpServletRequest req, HttpServletResponse res):</b></font> <br>
+It handles the POST request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doHead(HttpServletRequest req, HttpServletResponse res): </b></font> <br>
+It handles the HEAD request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doOptions(HttpServletRequest req, HttpServletResponse res): </b></font> <br>
+It handles the OPTIONS request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doPut(HttpServletRequest req, HttpServletResponse res):</b></font> <br>
+It handles the PUT request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doTrace(HttpServletRequest req, HttpServletResponse res) :</b></font> <br>
+It handles the TRACE request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected void doDelete(HttpServletRequest req, HttpServletResponse res):</b></font> <br>
+It handles the DELETE request. It is invoked by the web container.<br><br>
+<font color=\'#0091EA\'><b>protected long getLastModified(HttpServletRequest req): </b></font> <br>
+It returns the time when HttpServletRequest was last modified since midnight January 1, 1970 GMT.<br><br>
+<br><br><br><br>
+",
+"Oops! No  Data ",
+"Oops! No  Data "
+],
+"HTTP Status Codes":[
+"A status code is a numeric value with 3 digits. <br>
+W3C divided all the status codes broadly into 5 categories<br>
+starting <br>
+		with digit 1 (of type 1xx),<br>
+		with digit 2 (of type 2xx), <br>
+		with digit 3 (of type 3xx), <br>
+		with digit 4 (of type 4xx),<br>
+		with digit 5 (of type 5xx).<br>
+<br>
+<font color=\'#0091EA\'><b>Status Codes Classification in Web:</b></font> <br>
+1. Status codes with Prefix 1 (of type 1xx) : Meant for just Information.<br>
+2. Status codes with Prefix 2 (of type 2xx) : Means that Web Server accepted the request successfully.<br>
+3. Status codes with Prefix 3 (of type 3xx) : Meant for Redirection (Used when Server redirects the request).<br>
+4. Status codes with Prefix 4 (of type 4xx) : Client does some errors in requesting.<br>
+5. Status codes with Prefix 5 (of type 5xx) : Resource is available on the server and server is able to locate it but still unable to exeucte it.<br>
+<br>
+<font color=\'#0091EA\'><b>Web Status Codes List of Common Problems:</b></font><br>
+<font color=\'#0091EA\'><b>CODE			DESCRIPTION</b></font><br>
+<font color=\'#0091EA\'><b>100</b></font>				Continue<br>
+<font color=\'#0091EA\'><b>101</b></font>				Switching Protocols<br>
+<font color=\'#0091EA\'><b>102</b></font>				Processing<br>
+<font color=\'#0091EA\'><b>200</b></font>				OK<br>
+<font color=\'#0091EA\'><b>201</b></font>				Created<br>
+<font color=\'#0091EA\'><b>202</b></font>				Accepted<br>
+<font color=\'#0091EA\'><b>203</b></font>				Non-Authoritative Information<br>
+<font color=\'#0091EA\'><b>204</b></font>				No Content<br>
+<font color=\'#0091EA\'><b>205</b></font>				Reset Content<br>
+<font color=\'#0091EA\'><b>206</b></font>				Partial Content<br>
+<font color=\'#0091EA\'><b>208</b></font>				Already Reported<br>
+<font color=\'#0091EA\'><b>301</b></font>				Moved Permanently<br>
+<font color=\'#0091EA\'><b>302</b></font>				Found<br>
+<font color=\'#0091EA\'><b>304</b></font>				Not Modified<br>
+<font color=\'#0091EA\'><b>305</b></font>				Use Proxy<br>
+<font color=\'#0091EA\'><b>307</b></font>				Temporary Redirect<br>
+<font color=\'#0091EA\'><b>308</b></font>				Permanent Redirect<br>
+<font color=\'#0091EA\'><b>400</b></font>				Bad Request<br>
+<font color=\'#0091EA\'><b>401</b></font>				Unauthorized<br>
+<font color=\'#0091EA\'><b>402</b></font>				Payment Required<br>
+<font color=\'#0091EA\'><b>403</b></font>				Forbidden<br>
+<font color=\'#0091EA\'><b>404</b></font>				Not Found<br>
+<font color=\'#0091EA\'><b>405</b></font>				Method Not Allowed<br>
+<font color=\'#0091EA\'><b>406</b></font>				Not Acceptable<br>
+<font color=\'#0091EA\'><b>407</b></font>				Proxy Authentication Required<br>
+<font color=\'#0091EA\'><b>408</b></font>				Request Timeout<br>
+<font color=\'#0091EA\'><b>410</b></font>				Gone<br>
+<font color=\'#0091EA\'><b>412</b></font>				Precondition Failed<br>
+<font color=\'#0091EA\'><b>413</b></font>				Payload Too Large<br>
+<font color=\'#0091EA\'><b>414</b></font>				URI Too Long<br>
+<font color=\'#0091EA\'><b>415</b></font>				Unsupported Media Type<br>
+<font color=\'#0091EA\'><b>416</b></font>				Requested Range Not Satisfiable<br>
+<font color=\'#0091EA\'><b>417</b></font>				Expectation Failed<br>
+<font color=\'#0091EA\'><b>422</b></font>				Unprocessable Entity<br>
+<font color=\'#0091EA\'><b>423</b></font>				Locked<br>
+<font color=\'#0091EA\'><b>424</b></font>				Failed Dependency<br>
+<font color=\'#0091EA\'><b>425</b></font>				Unassigned<br>
+<font color=\'#0091EA\'><b>426</b></font>				Upgrade Required<br>
+<font color=\'#0091EA\'><b>428</b></font>				Precondition Required<br>
+<font color=\'#0091EA\'><b>429</b></font>				Too Many Requests<br>
+<font color=\'#0091EA\'><b>430</b></font>				Unassigned<br>
+<font color=\'#0091EA\'><b>431</b></font>				Request Header Fields Too Large<br>
+<font color=\'#0091EA\'><b>500</b></font>				Internal Server Error<br>
+<font color=\'#0091EA\'><b>501</b></font>				Not Implemented<br>
+<font color=\'#0091EA\'><b>502</b></font>				Bad Gateway<br>
+<font color=\'#0091EA\'><b>503</b></font>				Service Unavailable<br>
+<font color=\'#0091EA\'><b>504</b></font>				Gateway Timeout<br>
+<font color=\'#0091EA\'><b>505</b></font>				HTTP Version Not Supported<br>
+<font color=\'#0091EA\'><b>511</b></font>				Network Authentication Required<br>
+<br><br><br><br>",
+
+"Oops! No  Data ",
+"Oops! No  Data "
+],
+"ServletConfig Interface":[
+" <br>ServletConfig is from javax.Servlet.*; package.<br>
+ServletConfig implements GenericServlet.<br>
+A Servlet Configuration object is created  by a servlet container for each servlet.<br>
+ServletConfig is used to pass information to servlet during intialization from web.xml file.<br>
+<br>
+<font color=\'#0091EA\'><b>Methods of ServletConfig interface:</b></font><br>
+<font color=\'#0091EA\'><b>public String getInitParameter(String name)</b></font><br>
+It returns the parameter value for the specified parameter name.<br>
+<font color=\'#0091EA\'><b>public Enumeration getInitParameterNames()</b></font><br>
+It returns an enumeration of all the initialization parameter names.<br>
+<font color=\'#0091EA\'><b>public String getServletName()</b></font><br>
+It returns the name of the servlet.<br>
+<font color=\'#0091EA\'><b>public ServletContext getServletContext()</b></font><br>
+It returns an object of ServletContext.<br>
+<br><br><br><br>",
+
+" <br><font color=\'#0091EA\'><b>MyServlet.java</b></font><br>
+import java.io.*;  <br>
+import javax.servlet.*;  <br>
+import javax.servlet.http.HttpServlet;  <br>
+public class MyServlet extends HttpServlet {  <br>
+public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {   <br>
+    response.setContentType(\"text/html\");  <br>
+    PrintWriter out = response.getWriter();  <br>
+    ServletConfig config=getServletConfig();  <br>
+    String name =config.getInitParameter(\"name\");  <br>
+    out.print(\"My Name is: \"+name);  <br>
+    out.close();  <br>
+    }  <br>
+}<br>
+
+<font color=\'#0091EA\'><b>web.xml</b></font><br>
+ &lt web-app &gt   <br>
+ &lt servlet &gt   <br>
+ &lt servlet-name &gt MyServlet &lt /servlet-name &gt   <br>
+ &lt servlet-class &gt myServlet &lt /servlet-class &gt   <br>
+ &lt init-param &gt   <br>
+ &lt param-name &gt name &lt /param-name &gt   <br>
+ &lt param-value &gt Tom &lt /param-value &gt   <br>
+ &lt /init-param &gt   <br>
+ &lt /servlet &gt   <br>
+ &lt servlet-mapping &gt   <br>
+ &lt servlet-name &gt MyServlet &lt /servlet-name &gt   <br>
+ &lt url-pattern &gt /myServlet &lt /url-pattern &gt   <br>
+ &lt /servlet-mapping &gt   <br>
+ &lt /web-app &gt <br>
+<br><br><br><br>
+ ",
+"Oops! No  Data "
+],
+
+"ServletContext Interface":[
+" <br> ServletContext is from javax.Servlet.*; package.<br>
+ServletContext implements GenericServlet.<br>
+ServletContext defines a set of methods that a servlet use to communication with its servlet container.<br>
+For example to get the MIME type of a file (or) write to a log file.<br>
+There is one ServletContext object per web application per JVM.<br>
+ServletContext is used to get configuration information from the web.xml file.<br>
+ServletContext is used to set, get or remove attribute from the web.xml file<br>
+ServletContext is used to provide inter-application communication.<br>
+<br>
+<font color=\'#0091EA\'><b>Methods of ServletContext interface:</b></font><br>
+<font color=\'#0091EA\'><b>public String getInitParameter(String name)</b></font><br>
+It returns the parameter value for the specified parameter name.<br>
+<font color=\'#0091EA\'><b>public Enumeration getInitParameterNames()</b></font><br>
+It returns the names of the context's initialization parameters.<br>
+<font color=\'#0091EA\'><b>public void setAttribute(String name,Object object)</b></font><br>
+It sets the given object in the application scope.<br>
+<font color=\'#0091EA\'><b>public Object getAttribute(String name)</b></font><br>
+It returns the attribute for the specified name.<br>
+<font color=\'#0091EA\'><b>public Enumeration getInitParameterNames()</b></font><br>
+It returns the names of the context's initialization parameters as an Enumeration of String objects.<br>
+<font color=\'#0091EA\'><b>public void removeAttribute(String name)</b></font><br>
+It removes the attribute with the given name from the servlet context.<br>
+<br>
+<font color=\'#0091EA\'><b>How to get the reference of ServletContext inteface?</b></font><br>
+1: getServletContext() method  of  ServletConfig interface returns the object of ServletContext.<br>
+2: getServletContext() method of GenericServlet abstract class returns the object of ServletContext.<br>
+<br>
+<br>",
+" <br><font color=\'#0091EA\'><b>MyServlet.java</b></font><br>
+import java.io.*;  <br>
+import javax.servlet.*;  <br>
+import javax.servlet.http.HttpServlet;  <br>
+public class MyServlet extends HttpServlet {  <br>
+public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {   <br>
+    response.setContentType(\"text/html\");  <br>
+    PrintWriter out = response.getWriter();  <br>
+	/* Two ways of getting ServletContext object	 */<br>
+    //1: ServletContext object from ServletConfig object  <br>
+    ServletContext context=getServletConfig().getServletContext();  <br>
+    //2: From ServletContext object  <br>
+    ServletContext context=getServletContext();  <br>
+	String name =config.getInitParameter(\"name\");  <br>
+    out.print(\"My Name is: \"+name);  <br>
+    out.close();  <br>
+    }  <br>
+}<br>
+<br>
+<font color=\'#0091EA\'><b>web.xml</b></font><br>
+ &lt web-app &gt <br>   
+ &lt servlet &gt    <br>
+ &lt servlet-name &gt MyServlet &lt /servlet-name &gt <br>   
+ &lt servlet-class &gt myServlet &lt /servlet-class &gt    <br>
+ &lt context-param &gt    <br>
+ &lt param-name &gt name &lt /param-name &gt <br>   
+ &lt param-value &gt Tom &lt /param-value &gt    <br>
+ &lt /context-param &gt   <br>
+ &lt /servlet &gt    <br>
+ &lt servlet-mapping &gt <br>   
+ &lt servlet-name &gt MyServlet &lt /servlet-name &gt <br>   
+ &lt url-pattern &gt /myServlet &lt /url-pattern &gt    <br>
+ &lt /servlet-mapping &gt    <br>
+ &lt /web-app &gt  <br>
+
+<br><br><br><br> ",
+"Oops! No  Data "
+]
+    },
+      "com_ques": {
+  "comp": [
+    "Oops Concepts","KeyWords","String","Constructors","Method Overloading","Method Overridding","Abstract Vs Interface",
+		"Inner Class","Exception Handling","Multithreading","I/O","Collections","Enums","Jdbc",,"Reflection","New Features","Applets","Swings","this",
+		"super","final","Other KeyWords","Serialization & De-Ser..","Miscelinious"
+  ],
+	 "Oops Concepts": "<span><font color=\"#0091EA\"><b><center>   Total: 100</center></b></font></span><br><br>",
+      "KeyWords": "<span><font color=\"#0091EA\"><b><center>   Total: 100</center></b></font></span>\n<span> <font color=\"#0091EA\"><b><i><u> What is JDBC?</u></i></b></font></span><br>\n\n<br><br>"
+
+  }
+    }
+  
+}

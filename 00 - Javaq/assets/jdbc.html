@@ -1,0 +1,356 @@
+<html><head></head><body><span><font color="#33b5e5"><b><center>&nbsp;&nbsp;&nbsp;Total: 100</center></b></font></span>
+<span> <font color="#33b5e5"><b><i><u> What is JDBC?</u></i></b></font></span><br>
+<span> JDBC stands for Java Database Connectivity, which is a standard Java API for databaseindependent
+connectivity between the Java programming language and a wide range of databases.<br><br>
+<span><font color="#33b5e5"><b><i><u>  Describe a general JDBC Architecture?</u></i></b></font></span><br>
+<span> General JDBC Architecture consists of two layers: JDBC API (This provides the application-to-
+JDBC Manager connection) and JDBC Driver API (This supports the JDBC Manager-to-Driver
+Connection).<br><br>
+<span><font color="#33b5e5"><b><i><u> What are the common JDBC API components?</u></i></b></font></span><br>
+<span> JDBC API consists of following interfaces and classes: DriverManager, Driver, Connection,
+Statement, ResultSet, SQLException.<br><br>
+<span><font color="#33b5e5"><b><i><u>  What is a JDBC DriverManager?</u></i></b></font></span><br>
+<span> JDBC DriverManager is a class that manages a list of database drivers. It matches connection
+requests from the java application with the proper database driver using communication subprotocol.<br><br>
+<span><font color="#33b5e5"><b><i><u>  What is a JDBC Driver?</u></i></b></font></span><br>
+<span> JDBC driver is an interface enabling a Java application to interact with a database. To connect with
+individual databases, JDBC requires drivers for each database. The JDBC driver gives out the
+connection to the database and implements the protocol for transferring the query and result between
+client and database.<br><br>
+<span><font color="#33b5e5"><b><i><u>  What is a connection?</u></i></b></font></span><br>
+<span> Connection interface consists of methods for contacting a database. The connection object
+represents communication context.<br><br>
+<span>What is a statement?</span><br>
+<span> Statement encapsulates an SQL statement which is passed to the database to be parsed,
+compiled, planned and executed.<br><br>
+<span>What is a ResultSet?</span><br>
+<span> These objects hold data retrieved from a database after you execute an SQL query using Statement
+objects. It acts as an iterator to allow you to move through its data. The java.sql.ResultSet interface
+represents the result set of a database query.<br><br>
+<span>What are types of ResultSet?</span><br>
+<span> There are three constants which when defined in result set can move cursor in resultset backward,
+forward and also in a particular row.<br>
+1. ResultSet.TYPE_FORWARD_ONLY: The cursor can only move forward in the result set.<br>
+2. ResultSet.TYPE_SCROLL_INSENSITIVE: The cursor can scroll forwards and backwards, and
+the result set is not sensitive to changes made by others to the database that occur after the
+result set was created.<br>
+3. ResultSet.TYPE_SCROLL_SENSITIVE: The cursor can scroll forwards and backwards, and the
+result set is sensitive to changes made by others to the database that occur after the result set
+was created.<br><br>
+<span>What are the basic steps to create a JDBC application?</span><br>
+<span> Following are the basic steps to create a JDBC application:<br>
+1. Import packages containing the JDBC classes needed for database programming.<br>
+2. Register the JDBC driver, so that you can open a communications channel with the database.<br>
+3. Open a connection using the DriverManager.getConnection () method.<br>
+4. Execute a query using an object of type Statement.<br>
+5. Extract data from result set using the appropriate ResultSet.getXXX () method.<br>
+6. Clean up the environment by closing all database resources relying on the JVM's garbage
+collection.<br><br>
+<span>What are JDBC driver types?</span><br>
+<span> There are four types of JDBC drivers:<br>
+1. JDBC-ODBC Bridge plus ODBC driver, also called Type 1: calls native code of the locally
+available ODBC driver.<br>
+2. Native-API, partly Java driver, also called Type 2: calls database vendor native library on a client
+side. This code then talks to database over network.<br>
+3. JDBC-Net, pure Java driver, also called Type 3 : the pure-java driver that talks with the serverside
+middleware that then talks to database.<br>
+4. Native-protocol, pure Java driver, also called Type 4: the pure-java driver that uses database
+native protocol.<br><br>
+<span>When should each of the JDBC driver type be used?</span><br>
+<span> Following is a list as to when the four types of drivers can be used:<br>
+If you are accessing one type of database, such as Oracle, Sybase, or IBM, the preferred driver
+type is 4. If your Java application is accessing multiple types of databases at the same time, type 3 is the
+preferred driver.
+Type 2 drivers are useful in situations where a type 3 or type 4 driver is not available yet for your
+database.
+The type 1 driver is not considered a deployment-level driver and is typically used for
+development and testing purposes only.<br><br>
+<span>Which type of JDBC driver is the fastest one?</span><br>
+<span> JDBC Net pure Java driver(Type 4) is the fastest driver because it converts the JDBC calls into
+vendor specific protocol calls and it directly interacts with the database.<br><br>
+<span>Does the JDBC-ODBC Bridge support multiple concurrent open statements per connection?</span><br>
+<span> No. You can open only one Statement object per connection when you are using the JDBC-ODBC
+Bridge.<br><br>
+<span>What are the standard isolation levels defined by JDBC?</span><br>
+<span> The standard isolation levels are:<br>
+TRANSACTION_NONE<br>
+TRANSACTION_READ_COMMITTED<br>
+TRANSACTION_READ_UNCOMMITTED<br>
+TRANSACTION_REPEATABLE_READ<br>
+TRANSACTION_SERIALIZABLE<br><br>
+<span>What is the design pattern followed by JDBC?</span><br>
+<span> JDBC architecture decouples an abstraction from its implementation. Hence JDBC follows a
+bridge design pattern. The JDBC API provides the abstraction and the JDBC drivers provide the
+implementation. New drivers can be plugged-in to the JDBC API without changing the client code.<br><br>
+<span>What are the different types of JDBC Statements?</span><br>
+<span> Types of statements are:<br>
+Statement (regular SQL statement)<br>
+PreparedStatement (more efficient than statement due to pre-compilation of SQL)<br>
+CallableStatement (to call stored procedures on the database)<br>
+<span>What is difference between statement and prepared statement?</span><br>
+<span> Prepared statements offer better performance, as they are pre-compiled. Prepared statements
+reuse the same execution plan for different arguments rather than creating a new execution plan
+every time. Prepared statements use bind arguments, which are sent to the database engine. This
+allows mapping different requests with same prepared statement but different arguments to execute
+the same execution plan. Prepared statements are more secure because they use bind variables,
+which can prevent SQL injection attack.<br><br>
+<span>How do you register a driver?</span><br>
+<span> There are 2 approaches for registering the Driver:<br>
+Class.forName(): This method dynamically loads the driver's class file into memory, which
+automatically registers it. This method is preferable because it allows you to make the driver
+registration configurable and portable.<br>
+DriverManager.registerDriver(): This static method is used in case you are using a non-JDK
+compliant JVM, such as the one provided by Microsoft.<br><br>
+<span>What are the benefits of JDBC 4.0?</span><br>
+<span> Here are few advantages of JDBC 4.0<br>
+1. Auto loading of JDBC driver class. In the earlier versions we had to manually register and load
+drivers using class.forName.<br>
+2. Connection management enhancements. New methods added to javax.sql.PooledConnection.<br>
+3. DataSet Implementation of SQL using annotations.<br>
+4. SQL XML support.<br><br>
+<span>What do you mean by fastest type of JDBC driver?</span><br>
+<span> JDBC driver performance or fastness depends on a number of issues: Quality of the driver code,
+size of the driver code, database server and its load, Network topology, Number of times your request
+is translated to a different API.<br><br>
+
+<span>How do you create a connection object?</span><br>
+<span> There are 3 overloaded DriverManager.getConnection() methods to create a connection object:<br>
+1. getConnection(String url, String user, String password):Using a database URL with a
+username and password. <br>
+For example:<br>
+String URL = "jdbc:oracle:thin:@amrood:1521:EMP";<br>
+String USER = "username";<br>
+String PASS = "password"<br>
+Connection conn = DriverManager.getConnection(URL, USER, PASS);<br>
+2. getConnection(String url):Using only a database URL. <br>
+For example:<br>
+String URL = "jdbc:oracle:thin:username/password@amrood:1521:EMP";<br>
+Connection conn = DriverManager.getConnection(URL);<br>
+3. getConnection(String url, Properties prop):Using a database URL and a Properties object.<br>
+For example:<br>
+String URL = "jdbc:oracle:thin:@amrood:1521:EMP";<br>
+Properties info = new Properties( );<br>
+info.put( "user", "username" );<br>
+info.put( "password", "password" );<br><br>
+<span>How can I determine whether a Statement and its ResultSet will be closed on a commit or
+rollback?</span><br>
+<span> Use the DatabaseMetaData methods supportsOpenStatementsAcrossCommit() and
+supportsOpenStatementsAcrossRollback() to check.<br><br>
+<span>Is there a practical limit for the number of SQL statements that can be added to an instance of a Statement object?</span><br>
+<span> The specification makes no mention of any size limitation for Statement.addBatch(), this is
+dependent, on the driver.<br><br>
+<span>How cursor works in scrollable result set?</span><br>
+<span> There are several methods in the ResultSet interface that involve moving the cursor, like:
+beforeFirst(), afterLast(), first(), last(), absolute(int row), relative(int row), previous(), next(), getRow(),
+moveToInsertRow(), moveToCurrentRow().<br><br>
+<span>How can you view a result set?</span><br>
+<span> ResultSet interface contains get methods for each of the possible data types, and each get method
+has two versions:<br>
+1. One that takes in a column name.<br>
+2. One that takes in a column index.<br>
+For e.g.: getInt(String columnName), getInt(int columnIndex)<br><br>
+<span>How do you update a result set?</span><br>
+<span> ResultSet interface contains a collection of update methods for updating the data of a result set.
+Each update method has two versions for each data type:<br>
+1. One that takes in a column name.<br>
+2. One that takes in a column index.<br>
+These methods change the columns of the current row in the ResultSet object, but not in the
+underlying database. To update your changes to the row in the database, you need to invoke one of
+the following methods:<br>
+updateRow(), deleteRow(), refreshRow(), cancelRowUpdates(), insertRow()<br><br>
+<span>How does JDBC handle the data types of Java and database?</span><br>
+<span> The JDBC driver converts the Java data type to the appropriate JDBC type before sending it to the
+database. It uses a default mapping for most data types. For example, a Java int is converted to an
+SQL INTEGER.<br><br>
+<span>What causes "No suitable driver" error?</span><br>
+<span> "No suitable driver" is occurs during a call to the DriverManager.getConnection method, may be of
+any of the following reason:<br>
+1. Due to failing to load the appropriate JDBC drivers before calling the getConnection method.<br>
+2. It can be specifying an invalid JDBC URL, one that is not recognized by JDBC driver.<br>
+3. This error can occur if one or more the shared libraries needed by the bridge cannot be loaded.<br><br>
+<span>How do you handle SQL NULL values in Java?</span><br>
+<span> SQL's use of NULL values and Java's use of null are different concepts. There are three tactics you
+can use:<br>
+1. Avoid using getXXX( ) methods that return primitive data types.<br>
+2. Use wrapper classes for primitive data types, and use the ResultSet object's wasNull( )<br>
+method to test whether the wrapper class variable that received the value returned by the
+getXXX( ) method should be set to null.<br>
+3. Use primitive data types and the ResultSet object's wasNull( ) method to test whether the
+primitive variable that received the value returned by the getXXX( ) method should be set to an
+acceptable value that you've chosen to represent a NULL.<br><br>
+<span>What does setAutoCommit do?</span><br>
+<span> When a connection is created, it is in auto-commit mode. This means that each individual SQL
+statement is treated as a transaction and will be automatically committed right after it is executed. By
+setting auto-commit to false no SQL statements will be committed until you explicitly call the commit
+method.<br><br>
+<span>Why will you set auto commit mode to false?</span><br>
+<span> Following are the reasons:<br>
+1. To increase performance.<br>
+2. To maintain the integrity of business processes.<br>
+3. To use distributed transactions<br><br>
+<span>What is SavePoint?</span><br>
+<span> A savepoint marks a point that the current transaction can roll back to. Instead of rolling all of its
+changes back, it can choose to roll back only some of them. For example, suppose you:
+start a transaction<br>
+insert 10 rows into a table<br>
+set a savepoint<br>
+insert another 5 rows<br>
+rollback to the savepoint<br>
+commit the transaction<br>
+After doing this, the table will contain the first 10 rows you inserted. The other 5 rows will have been
+deleted by the rollback. A savepoint is just a marker that the current transaction can roll back to.<br><br>
+<span>What are SQL warnings?</span><br>
+<span> SQLWarning objects are a subclass of SQLException that deal with database access warnings.
+Warnings do not stop the execution of an application, as exceptions do. They simply alert the user that
+something did not happen as planned. A warning can be reported on a Connection object, a
+Statement object (including PreparedStatement and CallableStatement objects), or a ResultSet
+object. Each of these classes has a getWarnings method.<br><br>
+<span>Why would you use a batch process?</span><br>
+<span> Batch Processing allows you to group related SQL statements into a batch and submit them with
+one call to the database.<br><br>
+<span>What are the steps followed to create a batch process?</span><br>
+<span> Typical sequences of steps to use Batch Processing with Statement or PrepareStatement Object
+are:<br>
+1. In case of Batch processing using PrepareStatement object, create SQL statements with
+placeholders.<br>
+2. Create a Statement or PrepareStatement object using either createStatement() or
+prepareStatement() methods respectively.<br>
+3. Set auto-commit to false using setAutoCommit().<br>
+4. Add as many as SQL statements you like into batch using addBatch() method on created
+statement object.<br>
+5. Execute all the SQL statements using executeBatch() method on created statement object.<br>
+6. Finally, commit all the changes using commit() method.<br><br>
+<span>What is a Stored Procedure and how do you call it in JDBC?</span><br>
+<span> A stored procedure is a group of SQL statements that form a logical unit and perform a particular
+task. For example operations on an employee database (hire, fire, promote, lookup) could be coded
+as stored procedures executed by application code. Stored procedures can be called using
+CallableStatement class in JDBC API. For example the following code demonstrates this:
+CallableStatement cs = con.prepareCall("{call MY_SAMPLE_STORED_PROC}");
+ResultSet rs = cs.executeQuery();<br><br>
+<span>What is JDBC SQL escape syntax?</span><br>
+<span> The escape syntax gives you the flexibility to use database specific features unavailable to you by
+using standard JDBC methods and properties.<br>
+The general SQL escape syntax format is as follows:<br>
+{keyword 'parameters'}.<br>
+JDBC defines escape sequences that contain the standard syntax for the following language
+features:<br>
+1. Date, time, and timestamp literals (d, t, ts Keywords).<br>
+2. Scalar functions such as numeric, string, and data type conversion functions(fn Keyword).<br>
+3. Outer joins(oj Keyword)<br>
+4. Escape characters for wildcards used in LIKE clauses(escape Keyword).<br>
+5. Procedure calls(call Keyword).<br><br>
+<span>What is a transaction?</span><br>
+<span> A transaction is a logical unit of work. To complete a logical unit of work, several actions may need
+to be taken against a database. Transactions are used to provide data integrity, correct application
+semantics, and a consistent view of data during concurrent access.<br><br>
+<span>How will you insert multiple rows into a database in a single transaction?</span><br>
+<span> Follow steps as below:<br>
+//turn off the implicit commit<br>
+Connection.setAutoCommit(false);<br>
+//..your insert/update/delete goes here<br>
+Connection.Commit();<br>
+a new transaction is implicitly started.<br><br>
+<span>When will you get the message "No Suitable Driver"?</span><br>
+<span> When a Connection request is issued, the DriverManager asks each loaded driver if it understands
+the URL sent. When the URL passed is not properly constructed, then the "No Suitable Driver"
+message is returned.<br><br>
+<span>What is the difference between execute, executeQuery, executeUpdate?</span><br>
+<span> boolean execute(): Executes the any kind of SQL statement
+ResultSet executeQuery(): This is used generally for reading the content of the database. The output
+will be in the form of ResultSet. Generally SELECT statement is used.
+int executeUpdate(): This is generally used for altering the databases. Generally DROP TABLE or
+DATABASE, INSERT into TABLE, UPDATE TABLE, DELETE from TABLE statements will be used in
+this. The output will be in the form of int which denotes the number of rows affected by the query.<br><br>
+<span>Why do you have to close database connections in Java?</span><br>
+<span> You need to close the resultset, the statement and the connection. If the connection has come from
+a pool, closing it actually sends it back to the pool for reuse. We can do this in the finally{} block, such
+that if an exception is thrown, you still get the chance to close this.<br><br>
+<span>What is the use of blob, clob datatypes in JDBC?</span><br>
+<span> These are used to store large amount of data into database like images, movie etc which are
+extremely large in size.<br>
+<span>Resultset is an interface, how does it support rs.Next()?</span><br>
+<span> Every vendor of Database provides implementation of ResultSet & other interfaces, through the
+Driver.<br><br>
+<span>What is Connection Pooling ?</span><br>
+<span> Connection Pooling is a technique used for reuse of physical connections and reduced overhead
+for your application. Connection pooling functionality minimizes expensive operations in the creation
+and closing of sessions.Database vendor's help multiple clients to share a cached set of connection
+objects that provides access to a database. Clients need not create a new connection everytime to
+interact with the database.<br><br>
+<span>How do you implement connection pooling?</span><br>
+<span> If you use an application server like WebLogic, WebSphere, jBoss, Tomcat. , then your application
+server provides the facilities to configure for connection pooling. If you are not using an application
+server then components like Apache Commons DBCP Component can be used.<br>
+<span>Out of byte[] or a java.sql.Blob, which has best performance when used to manipulate data from database?</span><br>
+<span> java.sql.Blob has better performance as it does not extract any data from the database until you explicitly ask it to.<br><br>
+<span>Out of String or a java.sql.Clob, which has best performance when used to manipulate data from database?</span><br>
+<span> java.sql.Clob has better performance as it does not extract any data from the database until you
+explicitly ask it to.<br><br>
+<span>Suppose the SELECT returns 1000 rows, then how to retrieve the first 100 rows, then go back
+and retrieve the next 100 rows?</span><br>
+<span> Use the Statement.setFetchSize method to indicate the size of each database fetch.<br><br>
+<span>What does the Class.forName("MyClass") do?</span><br>
+<span> Class.forName("MyClass"):<br>
+1. Loads the class MyClass.<br>
+2. Execute any static block code of MyClass.<br>
+3. Returns an instance of MyClass.<br><br>
+<span>When you say Class.forName() loads the driver class, does it mean it imports the driver class
+using import statement?</span><br>
+<span> No, it doesn't. An import statement tells the compiler which class to look for. Class.forName()
+instructs the Class class to find a class-loader and load that particular Class object into the memory
+used by the JVM.<br><br>
+<span>What we set the attribute Concurrency in ResultSet?</span><br>
+<span> The ResultSet concurrency determines whether the ResultSet can be updated, or only read. A
+ResultSet can have one of two concurrency levels:<br>
+1. ResultSet.CONCUR_READ_ONLY :means that the ResultSet can only be read.<br>
+2. ResultSet.CONCUR_UPDATABLE : means that the ResultSet can be both read and updated.<br><br>
+<span>What are the differences between setMaxRows(int) and SetFetchSize(int)?</span><br>
+<span> The difference between setFetchSize(int) and setMaxRow(int) are:<br>
+setFetchSize(int) defines the number of rows that will be read from the database when the
+ResultSet needs more rows. setFetchSize(int) affects how the database returns the ResultSet
+data.<br>
+setMaxRows(int) method of the ResultSet specifies how many rows a ResultSet can contain at
+a time. setMaxRows(int) affects the client side JDBC object.<br><br>
+<span>What is a RowSet?</span><br>
+<span> A JDBC RowSet object holds tabular data in a way that makes it more flexible and easier to use
+than a result set. A RowSet objects are JavaBeans components.<br><br>
+<span>What are different types of RowSet objects?</span><br>
+<span> There are two types of RowSet:<br>
+1. Connected: A connected RowSet Object is permanent in nature. It doesn't terminate until the
+application is terminated.<br>
+2. Disconnected: A disconnected RowSet object is ad-hoc in nature. Whenever it requires
+retrieving data from the database, it establishes the connection and closes it upon finishing the
+required task. The data that is modified during disconnected state is updated after the
+connection is re-established.<br><br>
+<span>What is a "dirty read"?</span><br>
+<span> In typical database transactions, say one transaction reads and changes the value while the
+second transaction reads the value before committing or rolling back by the first transaction. This
+reading process is called as 'dirty read'. Because there is always a chance that the first transaction
+might rollback the change which causes the second transaction reads an invalid value.<br><br>
+<span>Which isolation level prevents dirty read in JDBC, connection class?</span><br>
+<span> TRANSACTION_READ_COMMITTED prevents dirty reads.<br>
+<span>What is Metadata and why should you use it?</span><br>
+<span> JDBC API has two Metadata interfaces : DatabaseMetaData & ResultSetMetaData. The meta data
+provides comprehensive information about the database as a whole. The implementation for these
+interfaces is implemented by database driver vendors to let users know the capabilities of a
+Database.<br><br>
+<span>How to Connect to an Excel Spreadsheet using JDBC in Java ?</span><br>
+<span> Follow the steps below:<br>
+First setup the new ODBC datasource. Goto Administrative Tools->Data Sources (ODBC)-
+>System DSN tab->Add->Driver do Microsoft Excel(*.xls)->Finish. Now give the Data Source
+Name (SampleExcel) & Description. Next, click Select Workbook and point to your excel sheet.
+In the code make to following code additions:<br>
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");<br>
+Connection conn=DriverManager.getConnection("jdbc:odbc:SampleExcel","","");<br>
+stmt=conn.createStatement();<br>
+sql="select * from [Sheet1$]";<br>
+rs=stmt.executeQuery(sql);<br>
+Where Sheet1 is the excel sheet name.<br><br>
+<span>What is difference between JDBC, JNDI and Hibernate?</span><br>
+<span> Hibernate is an Object-Relational Mapping tool. It maps Objects to relational data.<br>
+The Java Naming and Directory Interface (JNDI) is an API to access different naming and directory
+services. You use it to access something stored in a directory or naming service without haveing to
+code specifically to that naming or directory service.<br>
+Java DataBase Connectivity (JDBC) API is an API to access different relational databases. You use it
+to access relational databases without embedding a dependency on a specific database type in your
+code.<br><br><span> <font color="#33b5e5"><b><i><center>&nbsp;&nbsp;&nbsp; ---xXx---</center></i></b></font></span><br><br><br></body></html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical">
+    
+   
+
+    
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbarSize="10dp"
+		android:scrollbarThumbVertical="@layout/custom_scroll_style"
+    	android:gravity="center" />
+</LinearLayout>
+     -->
+     
+    <android.support.v4.view.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+    
+    <!-- -->
+<!-- <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="5"
+        android:scrollbars="vertical"/> -->
+        
+        
+        
+        <!-- <fragment  
+        android:id="@+id/display_topic_frag"  
+        android:name="com.example.javaiq.DisplayTopicFragment"  
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"   
+        android:layout_weight="1"  
+        />  --> 
+        
+

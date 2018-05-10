@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.javaq"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+           <activity 
+            android:name="com.example.javaq.Questions"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.QUESTIONS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+         <activity 
+            android:name="com.example.javaq.QuestionsTopics"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.QUESTIONSTOPICS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+         
+            <activity 
+            android:name="com.example.javaq.CompanyList"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.COMPANYLIST"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+         <activity 
+            android:name="com.example.javaq.CompanyQuestions"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.COMPANYQUESTIONS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.example.javaq.DisplayTopic"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.DISPLAYTOPIC"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+          <activity 
+            android:name="com.example.javaq.DisplayCompany"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.example.javaq.DISPLAYCOMPANY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+       
+         
+    </application>
+
+</manifest>

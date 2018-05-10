@@ -1,0 +1,66 @@
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><style media="screen" type="text/css">/*<![CDATA[*/@import 'stylesheet.css';/*]]>*/</style>
+<link rel="StyleSheet" type="text/css" href="file:///android_asset/style.css">
+</head>
+<body>
+
+ 
+
+ 
+<div id="wrapper">
+<br>
+<div class="title">
+<pre style='color:#000000;background:#ffffff;'><span style='color:#3f7f59; '>/*Adding elements in String array and retrieving*/</span>
+<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>class</span> Stringtest {
+	<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>static</span> <span style='color:#7f0055; font-weight:bold; '>void</span> main(<span style='color:#7f0055; font-weight:bold; '>String</span>[] args) {
+		<span style='color:#7f0055; font-weight:bold; '>String</span>[] str = <span style='color:#7f0055; font-weight:bold; '>new</span> <span style='color:#7f0055; font-weight:bold; '>String</span>[10];
+	    str[0] = <span style='color:#2a00ff; '>"A"</span>;
+	    str[1] = <span style='color:#2a00ff; '>"B"</span>;
+	<span style='color:#7f0055; font-weight:bold; '>String</span> name1 = str[0]; <span style='color:#3f7f59; '>/*TypeCasting is not required*/</span>
+	<span style='color:#7f0055; font-weight:bold; '>String</span> name2 = str[1]; <span style='color:#3f7f59; '>/*TypeCasting is not required*/</span>
+	}
+}
+</pre>
+</div><br>
+ 
+<div class="title">
+<pre style='color:#000000;background:#ffffff;'><span style='color:#3f7f59; '>/*In Java 5 : Adding elements in List and retrieving*/</span>
+<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>class</span> Generictest {
+	<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>static</span> <span style='color:#7f0055; font-weight:bold; '>void</span> main(<span style='color:#7f0055; font-weight:bold; '>String</span>[] args) {
+		<span style='color:#7f0055; font-weight:bold; '>List</span> list = <span style='color:#7f0055; font-weight:bold; '>new</span> ArrayList();
+		list.add(<span style='color:#2a00ff; '>"A"</span>);
+		list.add(<span style='color:#2a00ff; '>"B"</span>);
+		list.add(<span style='color:#7f0055; font-weight:bold; '>new</span> <span style='color:#7f0055; font-weight:bold; '>Integer</span>(10));
+		
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s1= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(0);
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s2= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(1);
+		<span style='color:#3f7f59; '>/*In Java5,  Here we get ClassCastException*/</span>
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s3= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(2);	
+	}
+}
+</pre>
+</div><br>
+
+<div class="title">
+<pre style='color:#000000;background:#ffffff;'><span style='color:#3f7f59; '>/*In Java 7 : Adding elements in List and retrieving*/</span>
+<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>class</span> Generictest {
+	<span style='color:#7f0055; font-weight:bold; '>public</span> <span style='color:#7f0055; font-weight:bold; '>static</span> <span style='color:#7f0055; font-weight:bold; '>void</span> main(<span style='color:#7f0055; font-weight:bold; '>String</span>[] args) {
+		<span style='color:#7f0055; font-weight:bold; '>List</span> list = <span style='color:#7f0055; font-weight:bold; '>new</span> ArrayList();
+		list.add(<span style='color:#2a00ff; '>"A"</span>);
+		list.add(<span style='color:#2a00ff; '>"B"</span>);
+		list.add(<span style='color:#7f0055; font-weight:bold; '>new</span> <span style='color:#7f0055; font-weight:bold; '>Integer</span>(10)); <span style='color:#3f7f59; '>/*In Java7,  Here we get compiler error */</span>
+		
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s1= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(0);
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s2= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(1);
+		<span style='color:#7f0055; font-weight:bold; '>String</span> s3= (<span style='color:#7f0055; font-weight:bold; '>String</span>)list.get(2);	<span style='color:#3f7f59; '>/*In Java7,  Here we don't  get ClassCastException*/</span>
+	}
+}
+</pre>
+</div><br>
+ 
+ 
+ 
+</div>
+<br><br> <br><br> <br><br> 
+
+</body>
+</html>

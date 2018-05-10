@@ -1,0 +1,120 @@
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><style media="screen" type="text/css">/*<![CDATA[*/@import 'stylesheet.css';/*]]>*/</style>
+<link rel="StyleSheet" type="text/css" href="file:///android_asset/style.css">
+</head>
+<body>
+<div id="wrapper"><div class="title">
+<span class="quesfont"><b>Generics:<br></b></span> 
+In case of arrays we can always give the guarantee about the type of the elements.<br>
+<br>
+Generics are a facility of generic programming that was added to the java programming language in 2004 as part of J2SE5.0<br>
+<br>
+To provide type-safety to collections generics are introduced.<br>
+They allows a type variable (or) method to operate on objects of various types while providing compile-time type safety.<br>
+<br><br>
+
+In case of arrays at the time of retrieval it is not required to perform any TypeCasting.<br>
+For example:<br>
+		String[] str = new String[10];<br>
+	    str[0] = "A";<br>
+	    str[1] = "B";<br>
+		String name1 = str[0]; /*TypeCasting is not required*/<br>
+		String name2 = str[1]; /*TypeCasting is not required*/<br>
+					<br>
+But in the case of collections at the time of retrieval compulsory we should perform typecasting otherwise we will get compile-time error.<br>
+<br>
+For example, if a programmer add integer in string type of collection, we dont get compile-time error but program may fail at run-time.<br>
+/*Creating list, adding different type of elements and iterating*/	<br>
+				List list = new ArrayList();<br>
+				list.add("A");<br>
+				list.add("B");<br>
+				list.add(new Integer(10));<br>
+		<br>
+				String s1= (String)list.get(0);<br>
+				String s2= (String)list.get(1);<br>
+				/*Here we get ClassCastException*/<br>
+				String s3= (String)list.get(2);	<br>
+/*Here there is no guarantee that collections can hold a particular type of objects. Hence writting collections are not safe to use.*/<br>
+<br>
+<span class="quesfont"><b>Until java 1.4  a non-generic version of ArrayList class is declared as:<br></b></span> 
+					Class ArrayList{<br>
+						add(Object obj);<br>
+						Object get(int index);<br>
+					}<br>
+<span class="quesfont"><b>In java 1.5  a generic version of ArrayList class is declared as:<br></b></span> 
+					Class ArrayList<T>{ 	/*Here T is type parameter*/<br>
+						add(<T> obj);<br>
+						<T> get(int index);<br>
+					}<br>
+Based on our run-time requirement, type parameter 'T' will be replaced with corresponding provided type.<br>
+<br>
+/*Note :1*/<br>
+Usage of parent class reference to hold child class object is considered as polymorphism.<br>
+Polymorphism concept is applicable only for base-type, but not for parameter-type.<br><br>
+Example:<br>
+List<String> list = new ArrayList<String>();	/*Here base-type is List and parameter-type is String*/<br>
+List<Object> list = new ArrayList<String>();	/*Here we get incompatible  types compile-time error*/<br>
+<br>
+/*Note :2*/<br>
+For parameter-type we can use only class (or) interface names, but we cannot use primitive-types.<br>
+Example:<br>
+List<Integer> list = new ArrayList<Integer>();		/*no error*/<br>
+List<int> list = new ArrayList<int>();		/*compile-time error*/<br>
+<br>
+
+<span class="quesfont"><b>Methods Of ListIterator:<b></span><br>
+<table>
+  <tr><th>Methods</th><th>Description</th></tr>
+  <tr>
+  <td>void add(E e):</td>
+  <td>Inserts the specified element into the list (optional operation). </td>
+  </tr>
+  <tr>
+  <td>boolean hasNext()</td>
+  <td>Returns true if this list iterator has more elements when traversing the list in the forward direction. </td>
+  </tr>
+  <tr>
+  <td>boolean hasPrevious()</td>
+  <td>Returns true if this list iterator has more elements when traversing the list in the reverse direction. </td>
+  </tr>
+  <tr>
+  <td>E next()</td>
+  <td>Returns the next element in the list and advances the cursor position. </td>
+  </tr>
+  <tr>
+  <td>int nextIndex()</td>
+  <td>Returns the index of the element that would be returned by a subsequent call to next(). </td>
+  </tr>
+  <tr>
+  <td>E previous()</td>
+  <td>Returns the previous element in the list and moves the cursor position backwards. </td>
+  </tr>
+  <tr>
+  <td>int previousIndex()</td>
+  <td>Returns the index of the element that would be returned by a subsequent call to previous(). </td>
+  </tr>
+  <tr>
+  <td>void 	remove()</td>
+  <td>Removes from the list the last element that was returned by next() or previous() (optional operation). </td>
+  </tr>
+  <tr>
+  <td>void 	set(E e)</td>
+  <td>Replaces the last element returned by next() or previous() with the specified element (optional operation). </td>
+  </tr>
+ 
+</table>
+<br>
+
+
+
+<br><br><br><br>
+
+</div>  
+ 
+</div>
+<br>
+ 
+ 
+ 
+</div>
+</body>
+</html>
